@@ -6,7 +6,7 @@
 # Generic server information
 server:
   # You should change this to your server's name
-  name: UnraveledMC
+  name: Rigel
 
   # The address your server is located at. Please do not include the port.
   address: play.unraveledmc.com
@@ -193,8 +193,8 @@ blocked_commands:
   - 'n:b:/spawnmob:_'
   - 'n:b:/maintenance:_'
   - 'n:b:/kill:_'
-  - 'n:b:/tellraw:&clol nope'
-  - 'n:b:/title:&clol nope'
+  - 'n:b:/tellraw:&cYou may not use this command.'
+  - 'n:b:/title:&cYou may not use this command.'
   - 'n:b:/tpall:&cYou may not use this command.'
   - 'n:b:/summon LightningBolt:&ePlease use &c/thorhammer &einstead.'
   - 'n:b:/clone:&cThis command has been disabled due to misuse.'
@@ -343,7 +343,7 @@ announcer:
   prefix: '&7&l[&a&lRigel&b&lMC&7&l] &c&l>> &6&l'
 
   announcements:
-    - 'If you want to apply for Super Admin, just do /ai! It gives you all information needed.'
+    - 'Are you intrested in applying for Super Admin?, just do /ai It gives you all information needed.'
     - 'Be sure to visit our forums at &6http://forum.rigelmc.ga'
     - 'You can always review the server rules here: &6http://forum.rigelmc.ga'
     - 'If you are not OP, be sure to ask!'
