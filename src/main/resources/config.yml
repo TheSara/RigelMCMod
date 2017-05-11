@@ -15,19 +15,18 @@ server:
   owners:
     - LightWarp
     - Arthorus
-    - Pinchyyy
+    - CeceliaArtemis
 
   # All players who show up as co-owner
   coowners: 
     - floweyteflower
-    - CeceliaArtemis
+    - santadeath
   
   # Retired staff
   retired: []
 
   # All players who show up as executive
   execs:
-    - CreeperSeth
     - OxLemonxO
 
   # All players who show up as master builder

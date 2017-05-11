@@ -39,14 +39,14 @@ public class Command_loginmessage extends FreedomCommand
         meta.setDisplayName(ChatColor.RED + "Remove current login message");
         removeLoginMessage.setItemMeta(meta);
         i.setItem(0, removeLoginMessage);
-        ItemStack animeFan = newLoginMessage(new ItemStack(Material.NAME_TAG), "Anime Fan", ChatColor.RED, "an &cAnime Fan", playerSender);
-        i.setItem(1, animeFan);
-        ItemStack someDamnBot = newLoginMessage(new ItemStack(Material.NAME_TAG), "Some damn bot", ChatColor.GREEN, "&aprobably some damn bot", playerSender);
-        i.setItem(2, someDamnBot);
-        ItemStack UnraveledMCAddict = newLoginMessage(new ItemStack(Material.NAME_TAG), "UnraveledMC Addict", ChatColor.GOLD, "an &7&lUnraveled&8&lMC &e&lAddict", playerSender);
-        i.setItem(3, UnraveledMCAddict);
-        ItemStack RWBYFan = newLoginMessage(new ItemStack(Material.NAME_TAG), "RWBY Fan", ChatColor.LIGHT_PURPLE, "a &4R&fW&8B&6Y &dFan", playerSender);
-        i.setItem(4, RWBYFan);
+        ItemStack memeLord = newLoginMessage(new ItemStack(Material.NAME_TAG), "Meme Lord", ChatColor.RED, "an &cMeme Lord", playerSender);
+        i.setItem(1, memeLord);
+        ItemStack offensiveMemer = newLoginMessage(new ItemStack(Material.NAME_TAG), "Offensive Memer", ChatColor.GREEN, "&aan &cOffensive Memer", playerSender);
+        i.setItem(2, offensiveMemer);
+        ItemStack RigelMCPlayah = newLoginMessage(new ItemStack(Material.NAME_TAG), "RigelMC Playah", ChatColor.GOLD, "an &a&lRigelMC &b&lPlayah", playerSender);
+        i.setItem(3, RigelMCPlayah);
+        ItemStack Weeb = newLoginMessage(new ItemStack(Material.NAME_TAG), "Weeb", ChatColor.LIGHT_PURPLE, "a god damn &eWeeb", playerSender);
+        i.setItem(4, Weeb);
         playerSender.openInventory(i);
         return true;
     }

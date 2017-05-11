@@ -19,15 +19,6 @@ arthorus:
   last_login: Wed, 2 Apr 2016 16:08:39 +0200
   login_message: 'an &9Owner&b'
 
-pinchyyy:
-  username: Pinchyyy
-  active: true
-  rank: SENIOR_ADMIN
-  ips:
-  - 4.4.8.8
-  last_login: Wed, 2 Apr 2016 16:08:39 +0200
-  login_message: 'an &9Owner&b'
-
 ceceliaartemis:
   username: CeceliaArtemis
   active: true
@@ -35,10 +26,19 @@ ceceliaartemis:
   ips:
   - 4.4.8.8
   last_login: Wed, 2 Apr 2016 16:08:39 +0200
-  login_message: 'a &4Co-Owner&b'
+  login_message: 'an &9Owner&b'
   
 floweyteflower:
   username: floweyteflower
+  active: true
+  rank: SENIOR_ADMIN
+  ips:
+  - 4.4.8.8
+  last_login: Wed, 2 Apr 2016 16:08:39 +0200
+  login_message: 'a &4Co-Owner&b'
+  
+santadeath:
+  username: santadeath
   active: true
   rank: SENIOR_ADMIN
   ips:
