@@ -28,6 +28,8 @@ server:
   # All players who show up as executive
   execs:
     - OxLemonxO
+    - SpikeyHelmet
+    - Highlord_Darion
 
   # All players who show up as master builder
   master_builders: []
@@ -52,7 +54,7 @@ motd:
 # The discord bot self verification system
 verification:
   # Should this be enabled?
-  enabled: false
+  enabled: true
   
   # If you do not know the bot token or don't have a bot created, you can do so at https://discordapp.com/developers/applications/me
   # A token must be specified if you have enabled verification
@@ -163,7 +165,6 @@ allow:
 #
 blocked_commands:
     # Disabled commands
-  - 'n:b:/socialspy:&cEw why the fuck are you using socialspy? Commandspy shows ALL the commands'
   - 'n:b:/time:Server-side time changing is disabled. Please use /ptime to set your own personal time.'
   - 'n:b:/gamemode:Use /creative and /survival to set your gamemode.'
   - 'n:b:/ban-ip:_'
@@ -204,6 +205,7 @@ blocked_commands:
   - 'n:b:/trigger:_'
   
   # Superadmin commands
+  - 's:b:/socialspy:_'
   - 's:b:/kick:_'
   - 's:b:/tool:_'
   - 's:b:/replaceitem:_'

@@ -52,7 +52,7 @@ public class RigelMCMod extends AeroPlugin<RigelMCMod>
     public static String pluginName;
     public static String pluginVersion = "1.9.1";
     public static String buildDate = "5/7/2017";
-    public static String compiledBy = "CreeperSeth";
+    public static String compiledBy = "LightWarp";
     //
     public MainConfig config;
     //
@@ -129,7 +129,7 @@ public class RigelMCMod extends AeroPlugin<RigelMCMod>
     public void enable()
     {
         FLog.info("Created by Madgeek1450 and Prozza");
-        FLog.info("Modified by CreeperSeth, AwesomePinch, and aggelosQQ");
+        FLog.info("Modified by CreeperSeth, AwesomePinch, aggelosQQ, LightWarp and santadeath");
         FLog.info("Version " + pluginVersion);
 
         final MethodTimer timer = new MethodTimer();

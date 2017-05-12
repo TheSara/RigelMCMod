@@ -23,7 +23,7 @@ public class WorldManager extends FreedomService
 
     public Flatlands flatlands;
     public AdminWorld adminworld;
-
+    
     public WorldManager(RigelMCMod plugin)
     {
         super(plugin);
@@ -37,7 +37,7 @@ public class WorldManager extends FreedomService
     {
         flatlands.getWorld();
         adminworld.getWorld();
-
+        
         // Disable weather
         if (ConfigEntry.DISABLE_WEATHER.getBoolean())
         {
