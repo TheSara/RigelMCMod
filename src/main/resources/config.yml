@@ -31,6 +31,7 @@ server:
     - SpikeyHelmet
     - Highlord_Darion
     - Commodore64x
+    - Assassinstickie
 
   # All players who show up as master builder
   master_builders: []
