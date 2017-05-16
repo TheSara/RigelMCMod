@@ -1,21 +1,21 @@
 #
-# UnraveledMCMod Configuration
+# RigelMCMod Configuration
 # by Madgeek1450, Prozza, and CreeperSeth
 #
 
 # Generic server information
 server:
   # You should change this to your server's name
-  name: Rigel
+  name: RigelMC
 
   # The address your server is located at. Please do not include the port.
-  address: play.unraveledmc.com
+  address: play.rigelmc.ga
 
   # All players who show up as owner
   owners:
     - LightWarp
-    - Arthorus
-    - CeceliaArtemis
+    - Arthouros
+    - CeleryCecelia
 
   # All players who show up as co-owner
   coowners: 
@@ -30,9 +30,11 @@ server:
     - OxLemonxO
     - SpikeyHelmet
     - Highlord_Darion
+    - Commodore64x
 
   # All players who show up as master builder
   master_builders: []
+  donors: []
 
   # URL players should appeal for bans at
   ban_url: http://forum.rigelmc.ga
@@ -46,10 +48,10 @@ motd:
   colorful_motd: true
 
   # What shows up on line 1
-  line_one: '&lRigelMC &l- &lFree &lOP'
+  line_one: '&lRigelMC &l- &lEpic &lFree &lOP'
   
   # What shows up on line 2
-  line_two: 'Running on %mcversion%'  
+  line_two: '&lDank Memes are Cool!'  
 
 # The discord bot self verification system
 verification:

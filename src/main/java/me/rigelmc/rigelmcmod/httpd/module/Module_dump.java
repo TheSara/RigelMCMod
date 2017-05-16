@@ -111,6 +111,6 @@ public class Module_dump extends HTTPDModule
     @Override
     public String getTitle()
     {
-        return "UnraveledMCMod :: Request Debug Dumper";
+        return "RigelMCMod :: Request Debug Dumper";
     }
 }

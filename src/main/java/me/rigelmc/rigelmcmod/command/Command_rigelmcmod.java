@@ -10,8 +10,8 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 @CommandPermissions(level = Rank.NON_OP, source = SourceType.BOTH)
-@CommandParameters(description = "Shows information about UnraveledMCMod or reloads it.", usage = "/<command> [reload]", aliases = "umcm")
-public class Command_unraveledmcmod extends FreedomCommand
+@CommandParameters(description = "Shows information about RigelMCMod or reloads it.", usage = "/<command> [reload]", aliases = "rmcm")
+public class Command_rigelmcmod extends FreedomCommand
 {
 
     @Override
@@ -42,13 +42,13 @@ public class Command_unraveledmcmod extends FreedomCommand
             FLog.info(message);
             return true;
         }
-        msg("UnraveledMCMod for 'UnraveledMC', an all-op server.", ChatColor.GOLD);
+        msg("RigelMCMod for 'RigelMC', an all-op freebuild server.", ChatColor.GOLD);
         msg("Version: " + RigelMCMod.pluginVersion, ChatColor.GOLD);
         msg("Compiled by: " + RigelMCMod.compiledBy, ChatColor.GOLD);
         msg("Compile date: " + RigelMCMod.buildDate, ChatColor.GOLD);
         msg("Running on " + ConfigEntry.SERVER_NAME.getString() + ".", ChatColor.GOLD);
-        msg("Created by aggelosQQ, AwesomePinch, and CreeperSeth.", ChatColor.GOLD);
-        msg("Visit " + ChatColor.AQUA + "http://unraveledmc.com" + ChatColor.GREEN + " for more information.", ChatColor.GREEN);
+        msg("Created by aggelosQQ, AwesomePinch, CreeperSeth, LightWarp, and santadeath.", ChatColor.GOLD);
+        msg("Visit " + ChatColor.AQUA + "http://forum.rigelmc.ga" + ChatColor.GREEN + " for more information.", ChatColor.GREEN);
         return true;
     }
 }

@@ -32,7 +32,7 @@ public class CommandLoader extends FreedomService
         handler.setOnlyPlayerMessage(ChatColor.RED + "This command can only be used by players.");
 
         handler.loadFrom(FreedomCommand.class.getPackage());
-        handler.registerAll("UnraveledMCMod", true);
+        handler.registerAll("RigelMCMod", true);
         totalCommands = handler.getExecutors().size();
 
         FLog.info("Loaded " + totalCommands + " commands.");

@@ -29,7 +29,7 @@ public class Command_debug extends FreedomCommand
 
             if (className.equalsIgnoreCase("_"))
             {
-                className = "me.unraveledmc.unraveledmcmod.UnraveledMCMod";
+                className = "me.rigelmc.rigelmcmod.RigelMCMod";
             }
 
             setStaticValue(className, fieldName, newValue);

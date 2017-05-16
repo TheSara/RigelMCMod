@@ -1,5 +1,5 @@
 #
-# UnraveledMCMod Admin List
+# RigelMCMod Admin List
 # 
 lightwarp:
   username: LightWarp
@@ -10,8 +10,8 @@ lightwarp:
   last_login: Wed, 2 Apr 2016 16:08:39 +0200
   login_message: 'an &9Owner&b'
   
-arthorus:
-  username: Arthorus
+arthouros:
+  username: Arthouros
   active: true
   rank: SENIOR_ADMIN
   ips:
