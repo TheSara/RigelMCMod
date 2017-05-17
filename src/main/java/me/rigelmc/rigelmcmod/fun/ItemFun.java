@@ -3,6 +3,7 @@ package me.rigelmc.rigelmcmod.fun;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.Set;
 import me.rigelmc.rigelmcmod.FreedomService;
 import me.rigelmc.rigelmcmod.RigelMCMod;
 import me.rigelmc.rigelmcmod.config.ConfigEntry;
@@ -11,6 +12,7 @@ import me.rigelmc.rigelmcmod.util.DepreciationAggregator;
 import me.rigelmc.rigelmcmod.util.FUtil;
 import org.bukkit.Location;
 import org.bukkit.Material;
+import org.bukkit.Particle;
 import org.bukkit.Sound;
 import org.bukkit.block.Block;
 import org.bukkit.entity.LivingEntity;
@@ -231,11 +233,6 @@ public class ItemFun extends FreedomService
 
             case BLAZE_ROD:
             {
-                if (!ConfigEntry.ALLOW_EXPLOSIONS.getBoolean())
-                {
-                    break;
-                }
-
                 if (!plugin.al.isSeniorAdmin(player))
                 {
                     break;
@@ -244,23 +241,22 @@ public class ItemFun extends FreedomService
                 event.setCancelled(true);
                 Block targetBlock;
 
-                if (event.getAction().equals(Action.LEFT_CLICK_AIR))
+                if (event.getAction().equals(Action.RIGHT_CLICK_AIR))
                 {
-                    targetBlock = DepreciationAggregator.getTargetBlock(player, null, 120);
+                    Set<Material> mat = null;
+                    targetBlock = player.getTargetBlock(mat, 255);
                 }
                 else
                 {
                     targetBlock = event.getClickedBlock();
                 }
 
-                if (targetBlock == null)
+                if (ConfigEntry.ALLOW_EXPLOSIONS.getBoolean())
                 {
-                    player.sendMessage("Can't resolve target block.");
-                    break;
+                    player.getWorld().createExplosion(targetBlock.getLocation(), ConfigEntry.EXPLOSIVE_RADIUS.getInteger(), true);
                 }
-
-                player.getWorld().createExplosion(targetBlock.getLocation(), 4F, true);
-                player.getWorld().strikeLightning(targetBlock.getLocation());
+                player.getWorld().strikeLightningEffect(targetBlock.getLocation());
+                player.getWorld().spawnParticle(Particle.EXPLOSION_HUGE, targetBlock.getLocation(), 20);
 
                 break;
             }
