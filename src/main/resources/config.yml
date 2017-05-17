@@ -20,10 +20,10 @@ server:
   # All players who show up as co-owner
   coowners: 
     - floweyteflower
-    - santadeath
   
   # Retired staff
-  retired: []
+  retired: 
+    - santadeath
 
   # All players who show up as executive
   execs:
