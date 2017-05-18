@@ -22,15 +22,11 @@
         <url>git@github.com:UnraveledMC/UnraveledMCMod.git</url>
     </scm>
 
-        <repositories>
+    <repositories>
         <repository>
             <id>jcenter</id>
             <name>jcenter-bintray</name>
             <url>http://jcenter.bintray.com</url>
-        </repository>
-        <repository>
-            <id>sk89q-snapshots</id>
-            <url>http://maven.sk89q.com/artifactory/repo</url>
         </repository>
         <repository>
             <id>dmulloy2-repo</id>
@@ -47,10 +43,6 @@
         <repository>
             <id>spigot-repo</id>
             <url>https://hub.spigotmc.org/nexus/content/repositories/snapshots/</url>
-        </repository>
-        <repository>
-            <id>ess-repo</id>
-            <url>http://repo.ess3.net</url>
         </repository>
         <repository>
             <id>elmakers-repo</id>
