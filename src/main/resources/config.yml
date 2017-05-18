@@ -28,10 +28,13 @@ server:
   # All players who show up as executive
   execs:
     - OxLemonxO
+    - Assassinstickie
+    - ShRules
     - SpikeyHelmet
     - Highlord_Darion
     - Commodore64x
-    - Assassinstickie
+    - 2015febrot
+    - ShRules
 
   # All players who show up as master builder
   master_builders: []
