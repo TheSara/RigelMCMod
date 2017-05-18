@@ -3,8 +3,6 @@ CONTRIBUTING.MD
 LICENSE.MD
 README.MD
 
-# UMCM excludes
-/lib
 
 # Netbeans excludes
 /nbproject/private
