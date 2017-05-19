@@ -22,8 +22,7 @@ server:
     - floweyteflower
   
   # Retired staff
-  retired: 
-    - santadeath
+  retired: []
 
   # All players who show up as executive
   execs:
@@ -34,6 +33,7 @@ server:
     - Assassinstickie
     - 2015febrot
     - ShRules
+    - santadeath
 
   # All players who show up as master builder
   master_builders: []
@@ -361,7 +361,7 @@ announcer:
     - 'You may view all online administrators via "/list -a"'
     - 'Save your buildings via WorldEdit! http://forum.rigelmc.ga for more information!'
     - 'We are an offline/cracked server!'
-    - 'LightWarp, Arthorus, Pinchyyy, CeceliaArtemis and floweyteflower are the owners of RigelMC.'
+    - 'LightWarp, Arthouros, CeceliaArtemis(CeleryCecelia) and floweyteflower are the owners of RigelMC.'
     - 'Server lagging? Check the lag via "/tps"'
     - 'You are allowed to record and stream videos on RigelMC.'
     - 'Player vs player while in creative or god mode it forbidden!'
