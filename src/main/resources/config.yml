@@ -20,6 +20,7 @@ server:
   # All players who show up as co-owner
   coowners: 
     - floweyteflower
+    - santadeath
   
   # Retired staff
   retired: []
@@ -33,7 +34,6 @@ server:
     - Assassinstickie
     - 2015febrot
     - ShRules
-    - santadeath
 
   # All players who show up as master builder
   master_builders: []
@@ -210,6 +210,8 @@ blocked_commands:
   - 'n:b:/trigger:_'
   
   # Superadmin commands
+  - 's:b:/altcheck:_'
+  - 's:b:/iplookup:_'
   - 's:b:/socialspy:_'
   - 's:b:/kick:_'
   - 's:b:/tool:_'
