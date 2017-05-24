@@ -54,7 +54,7 @@ motd:
   line_one: '&lRigelMC &l- &lEpic &lFree &lOP'
   
   # What shows up on line 2
-  line_two: '&lDank Memes are Cool!'  
+  line_two: '&lDank &lMemes &lAre &lCool'  
 
 # The discord bot self verification system
 verification:
@@ -170,6 +170,8 @@ allow:
 #
 blocked_commands:
     # Disabled commands
+  - 'n:b:/summon:&cDisabled for security reasons.'
+  - 'n:b:/fakevote:_'
   - 'n:b:/time:Server-side time changing is disabled. Please use /ptime to set your own personal time.'
   - 'n:b:/gamemode:Use /creative and /survival to set your gamemode.'
   - 'n:b:/ban-ip:_'
@@ -210,6 +212,10 @@ blocked_commands:
   - 'n:b:/trigger:_'
   
   # Superadmin commands
+  - 's:b:/emote:_'
+  - 's:b:/afhelp:_'
+  - 's:b://sphere:_'
+  - 's:b://brush:_'
   - 's:b:/altcheck:_'
   - 's:b:/iplookup:_'
   - 's:b:/socialspy:_'
@@ -275,6 +281,12 @@ blocked_commands:
   - 's:b:/restart:_'
 
   # Senior admin only commands
+  - 'c:b:/afremove:&cOnly Seniors+ can delete Images!'
+  - 'c:b:/afcreate:&cAsk a Senior+ to create you an Image!'
+  - 'c:b:/pl:&c:>'
+  - 'c:b:/plugins:&c:>'
+  - 'c:b:/hb:&eOnly senior administrators may use that command.'
+  - 'c:b:/herobrine:&eOnly senior administrators may use that command.'
   - 'c:b:/discord:&eOnly senior administrators may use that command.'
   - 'c:b:/sbclear:&eOnly senior administrators may clear the box.'
   - 'c:b:/sensibility:&eOnly senior administrators may use that.'
