@@ -237,8 +237,8 @@ public class CrescentRose extends FreedomService
     	lore.add(ChatColor.GOLD + "AND BY OVER POWERED I MEAN INSTANT KILL");
     	lore.add(ChatColor.YELLOW + "It costs " + ChatColor.RED + use_price + ChatColor.YELLOW + " coins per use in order to use this item.");
     	datMeta.setLore(lore);
-    	datMeta.addEnchant(Enchantment.DAMAGE_UNDEAD, 420, true);
-    	datMeta.addEnchant(Enchantment.DAMAGE_ALL, 420, true);
+    	datMeta.addEnchant(Enchantment.DAMAGE_UNDEAD, 42069, true);
+    	datMeta.addEnchant(Enchantment.DAMAGE_ALL, 42069, true);
     	datMeta.setUnbreakable(true);
     	NEEDED_A_RWBY_REFERENCE.setItemMeta(datMeta);
     	return NEEDED_A_RWBY_REFERENCE;
