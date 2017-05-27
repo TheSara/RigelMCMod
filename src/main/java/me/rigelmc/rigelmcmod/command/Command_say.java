@@ -41,7 +41,7 @@ public class Command_say extends FreedomCommand
             }
         }
         
-        String color = "&d";
+        String color = "&b";
         
         if (!senderIsConsole)
         {
