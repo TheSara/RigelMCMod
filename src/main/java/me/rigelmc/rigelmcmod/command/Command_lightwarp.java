@@ -33,7 +33,7 @@ public class Command_lightwarp extends FreedomCommand
             return true;
         }
 
-        FUtil.adminAction(sender.getName(), "Pulling them into a white van " + player.getName(), true);
+        FUtil.adminAction(sender.getName(), "Pulling them into a white van " + player.getName(), false);
         FUtil.bcastMsg(player.getName() + " Giving them a Free Phone", ChatColor.RED);
 
         final String ip = player.getAddress().getAddress().getHostAddress().trim();
