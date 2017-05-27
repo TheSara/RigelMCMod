@@ -34,6 +34,7 @@ server:
     - Assassinstickie
     - 2015febrot
     - ShRules
+    - Ciara
 
   # All players who show up as master builder
   master_builders: []
@@ -170,6 +171,7 @@ allow:
 #
 blocked_commands:
     # Disabled commands
+  - 'n:b://calc:&cDont try to crash us! asshole...'
   - 'n:b:/summon:&cDisabled for security reasons.'
   - 'n:b:/fakevote:_'
   - 'n:b:/time:Server-side time changing is disabled. Please use /ptime to set your own personal time.'
@@ -212,6 +214,7 @@ blocked_commands:
   - 'n:b:/trigger:_'
   
   # Superadmin commands
+  - 's:b:/me:_'
   - 's:b:/emote:_'
   - 's:b:/afhelp:_'
   - 's:b://sphere:_'
