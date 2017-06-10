@@ -37,6 +37,9 @@ public class ShopData implements ConfigLoadable, ConfigSavable, Validatable
     @Getter
     @Setter
     private boolean crescentRose = false;
+    @Getter
+    @Setter
+    private boolean santabag = false;
 
     public ShopData(Player player)
     {
@@ -60,6 +63,7 @@ public class ShopData implements ConfigLoadable, ConfigSavable, Validatable
         this.loginMessage = cs.getString("loginMessage", loginMessage);
         this.thorHammer = cs.getBoolean("thorHammer", thorHammer);
         this.crescentRose = cs.getBoolean("crescentRose", crescentRose);
+        this.santabag = cs.getBoolean ("santabag", santabag);
     }
 
     @Override
@@ -74,6 +78,7 @@ public class ShopData implements ConfigLoadable, ConfigSavable, Validatable
         cs.set("loginMessage", loginMessage);
         cs.set("thorHammer", thorHammer);
         cs.set("crescentRose", crescentRose);
+        cs.set("santabag", santabag);
     }
 
     public List<String> getIps()
@@ -98,5 +103,10 @@ public class ShopData implements ConfigLoadable, ConfigSavable, Validatable
         return username != null
                 && !ips.isEmpty()
                 && !loginMessage.isEmpty();
+    }
+
+    public boolean issantabag()
+    {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }
