@@ -57,6 +57,8 @@ public enum ConfigEntry
     SHOP_THOR_HAMMER_PRICE(Integer.class, "shop.thor_hammer_price"),
     SHOP_CRESCENT_ROSE_PRICE(Integer.class, "shop.crescent_rose_price"),
     SHOP_CRESCENT_ROSE_USE_PRICE(Integer.class, "shop.crescent_rose_use_price"),
+    SHOP_SANTABAG_PRICE(Integer.class, "shop.santabag_price"),
+    SHOP_SANTABAG_USE_PRICE(Integer.class, "shop.santabag_use_price"),
     //
     ADMIN_LOGIN_MESSAGE(List.class, "admins.admin_login_message"),
     ADMINLIST_CLEAN_THESHOLD_HOURS(Integer.class, "admins.adminlist.clean_threshold_hours"),
@@ -197,5 +199,13 @@ public enum ConfigEntry
             }
         }
         return null;
+    }
+
+    public static class SHOP_SANTABAG_PRICE
+    {
+
+        public SHOP_SANTABAG_PRICE()
+        {
+        }
     }
 }
