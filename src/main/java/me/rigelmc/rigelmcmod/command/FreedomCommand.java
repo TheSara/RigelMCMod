@@ -18,10 +18,10 @@ import org.bukkit.entity.Player;
 public abstract class FreedomCommand extends AbstractCommandBase<RigelMCMod>
 {
 
-    public static final String YOU_ARE_OP = ChatColor.YELLOW + "You are now op!";
-    public static final String YOU_ARE_NOT_OP = ChatColor.YELLOW + "You are no longer op!";
+    public static final String YOU_ARE_OP = ChatColor.RED + "You are now op!";
+    public static final String YOU_ARE_NOT_OP = ChatColor.RED + "You are no longer op!";
     public static final String NOT_FROM_CONSOLE = "This command may not be used from the console.";
-    public static final String PLAYER_NOT_FOUND = ChatColor.GRAY + "Player not found!";
+    public static final String PLAYER_NOT_FOUND = ChatColor.BLUE + "Player not found!";
     //
     @Getter
     private final CommandParameters params;
