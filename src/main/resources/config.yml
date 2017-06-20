@@ -27,11 +27,11 @@ server:
 
   # All players who show up as executive
   execs:
+    - TheHour
     - OxLemonxO
     - SpikeyHelmet
     - SkunkSmasher
     - Commodore64x
-    - Assassinstickie
     - 2015febrot
     - ShRules
     - Ciara
@@ -91,6 +91,9 @@ shop:
   
   # How much should it cost a player to use Crescent Rose per attack
   crescent_rose_use_price: 50
+  
+  # How much should the minigun cost
+  minigun_price: 300
   
 # Admins
 admins:

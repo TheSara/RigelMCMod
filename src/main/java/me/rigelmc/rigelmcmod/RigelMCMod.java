@@ -17,6 +17,7 @@ import me.rigelmc.rigelmcmod.bridge.BukkitTelnetBridge;
 import me.rigelmc.rigelmcmod.bridge.EssentialsBridge;
 import me.rigelmc.rigelmcmod.bridge.LibsDisguisesBridge;
 import me.rigelmc.rigelmcmod.bridge.WorldEditBridge;
+import me.rigelmc.rigelmcmod.bridge.CoreProtectBridge;
 import me.rigelmc.rigelmcmod.caging.Cager;
 import me.rigelmc.rigelmcmod.command.CommandLoader;
 import me.rigelmc.rigelmcmod.config.MainConfig;
@@ -27,6 +28,8 @@ import me.rigelmc.rigelmcmod.fun.Landminer;
 import me.rigelmc.rigelmcmod.fun.Lightning;
 import me.rigelmc.rigelmcmod.fun.CrescentRose;
 import me.rigelmc.rigelmcmod.fun.MP44;
+import me.rigelmc.rigelmcmod.fun.Minigun;
+import me.rigelmc.rigelmcmod.leveling.LevelManager;
 import me.rigelmc.rigelmcmod.httpd.HTTPDaemon;
 import me.rigelmc.rigelmcmod.player.PlayerList;
 import me.rigelmc.rigelmcmod.rank.RankManager;
@@ -50,7 +53,7 @@ public class RigelMCMod extends AeroPlugin<RigelMCMod>
     public static final String CONFIG_FILENAME = "config.yml";
     //
     public static String pluginName;
-    public static String pluginVersion = "1.9.1";
+    public static String pluginVersion = "2.0";
     public static String buildDate = "5/7/2017";
     public static String compiledBy = "LightWarp";
     //
@@ -103,15 +106,18 @@ public class RigelMCMod extends AeroPlugin<RigelMCMod>
     public ItemFun it;
     public Landminer lm;
     public MP44 mp;
+    public Minigun mg;
     public Jumppads jp;
     public Trailer tr;
     public HTTPDaemon hd;
     public Lightning ln;
     public CrescentRose cr;
+    public LevelManager lvm;
     //
     // Bridges
     public ServiceManager<RigelMCMod> bridges;
     public BukkitTelnetBridge btb;
+    public CoreProtectBridge cpb;
     public EssentialsBridge esb;
     public LibsDisguisesBridge ldb;
     public WorldEditBridge web;
@@ -208,6 +214,7 @@ public class RigelMCMod extends AeroPlugin<RigelMCMod>
         ln = services.registerService(Lightning.class);
         cr = services.registerService(CrescentRose.class);
         mp = services.registerService(MP44.class);
+        mg = services.registerService(Minigun.class);
         jp = services.registerService(Jumppads.class);
         tr = services.registerService(Trailer.class);
 

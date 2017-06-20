@@ -59,6 +59,7 @@ public enum ConfigEntry
     SHOP_CRESCENT_ROSE_USE_PRICE(Integer.class, "shop.crescent_rose_use_price"),
     SHOP_SANTABAG_PRICE(Integer.class, "shop.santabag_price"),
     SHOP_SANTABAG_USE_PRICE(Integer.class, "shop.santabag_use_price"),
+    SHOP_MINIGUN_PRICE(Integer.class, "shop.minigun_price"),
     //
     ADMIN_LOGIN_MESSAGE(List.class, "admins.admin_login_message"),
     ADMINLIST_CLEAN_THESHOLD_HOURS(Integer.class, "admins.adminlist.clean_threshold_hours"),

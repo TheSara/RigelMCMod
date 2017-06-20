@@ -23,6 +23,7 @@ public class Command_shop extends FreedomCommand
     public final int customLoginMessagePrice = ConfigEntry.SHOP_LOGIN_MESSAGE_PRICE.getInteger();
     public final int thorHammerPrice = ConfigEntry.SHOP_THOR_HAMMER_PRICE.getInteger();
     public final int crescentRosePrice = ConfigEntry.SHOP_CRESCENT_ROSE_PRICE.getInteger();
+    public final int minigunPrice = ConfigEntry.SHOP_MINIGUN_PRICE.getInteger();
     public int coins;
     
 
@@ -41,6 +42,7 @@ public class Command_shop extends FreedomCommand
         Boolean hasCustomLoginMessages = sd.isCustomLoginMessage();
         Boolean hasThorHammer = sd.isThorHammer();
         Boolean hasCrescentRose = sd.isCrescentRose();
+        Boolean hasMinigun = sd.isMinigun();
         Inventory i = server.createInventory(null, 36, plugin.sh.GUIName);
         for (int slot = 0; slot < 36; slot++)
         {
@@ -58,6 +60,8 @@ public class Command_shop extends FreedomCommand
         i.setItem(14, thorHammer);
         ItemStack crescentRose = newShopItem(new ItemStack(Material.DIAMOND_HOE), ChatColor.DARK_RED, "Crescent Rose", crescentRosePrice, hasCrescentRose);
         i.setItem(16, crescentRose);
+        ItemStack minigun = newShopItem(new ItemStack(Material.IRON_BARDING), ChatColor.YELLOW, "Minigun", minigunPrice, hasMinigun);
+        i.setItem(20, minigun);
         // Coins
         ItemStack coins = new ItemStack(Material.GOLD_NUGGET);
         ItemMeta m = coins.getItemMeta();

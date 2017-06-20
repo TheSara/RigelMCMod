@@ -11,6 +11,7 @@ import net.pravian.aero.base.Validatable;
 import org.apache.commons.lang3.Validate;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.entity.Player;
+import me.rigelmc.rigelmcmod.leveling.Level;
 
 public class ShopData implements ConfigLoadable, ConfigSavable, Validatable
 {
@@ -40,7 +41,11 @@ public class ShopData implements ConfigLoadable, ConfigSavable, Validatable
     @Getter
     @Setter
     private boolean santabag = false;
-
+    @Getter
+    @Setter
+    private boolean minigun = false;
+    private String level = "PEASANT";
+    
     public ShopData(Player player)
     {
         this(player.getName());
@@ -96,7 +101,15 @@ public class ShopData implements ConfigLoadable, ConfigSavable, Validatable
     {
         return ips.remove(ip);
     }
-
+    public Level getLevel()
+    {
+        return Level.findLevel(level);
+    }
+    
+    public void setLevel(Level lvl)
+    {
+        level = lvl.toString();
+    }
     @Override
     public boolean isValid()
     {

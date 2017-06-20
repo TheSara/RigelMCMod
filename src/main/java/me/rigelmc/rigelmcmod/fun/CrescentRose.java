@@ -130,7 +130,7 @@ public class CrescentRose extends FreedomService
                 if (!FUtil.isExecutive(p.getName()))
                 {
                     ShopData sd = plugin.sh.getData(p);
-                    if (plugin.sl.canOfford(use_price, sd.getCoins()))
+                    if (plugin.sl.canAfford(use_price, sd.getCoins()))
                     {
                         sd.setCoins(sd.getCoins() - use_price);
                     }
@@ -180,7 +180,7 @@ public class CrescentRose extends FreedomService
                 {
                     if (!FUtil.isExecutive(p.getName()))
                     {
-                        if (plugin.sl.canOfford(use_price, sd.getCoins()))
+                        if (plugin.sl.canAfford(use_price, sd.getCoins()))
                         {
                             sd.setCoins(sd.getCoins() - use_price);
                         }
