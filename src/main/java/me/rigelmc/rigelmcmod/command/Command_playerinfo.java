@@ -36,7 +36,7 @@ public class Command_playerinfo extends FreedomCommand
         {
             msg("Name: " + player.getName(), ChatColor.AQUA);
             msg("Opped: " + (player.isOp() ? ChatColor.GREEN + "true" : ChatColor.RED + "false"), ChatColor.LIGHT_PURPLE);
-            msg("Gamemode: " + player.getGameMode().name(), ChatColor.DARK_BLUE);
+            msg("Gamemode: " + player.getGameMode().name().toLowerCase().substring(0, 1).toUpperCase(), ChatColor.DARK_BLUE);
             msg("IPs: " + StringUtils.join(plugin.pl.getData(player).getIps(), ", "), ChatColor.GREEN);
             msg("Rank: " + plugin.rm.getDisplay(player).getColor() + plugin.rm.getDisplay(player).getName(), ChatColor.LIGHT_PURPLE);
             msg("Last command: " + playerdata.getLastCommand());

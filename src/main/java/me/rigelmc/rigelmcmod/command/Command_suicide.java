@@ -8,7 +8,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 @CommandPermissions(level = Rank.OP, source = SourceType.ONLY_IN_GAME)
-@CommandParameters(description = "Kill yourself", usage = "/<command>")
+@CommandParameters(description = "Kill yourself", usage = "/<command>", aliases = "kms")
 public class Command_suicide extends FreedomCommand
 {
 

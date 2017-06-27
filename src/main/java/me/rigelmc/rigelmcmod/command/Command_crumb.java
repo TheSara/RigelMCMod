@@ -30,7 +30,7 @@ public class Command_crumb extends FreedomCommand
         int index = random.nextInt(ITEMS.toArray().length);
         Material material = ITEMS.get(index);
         ItemStack itemstack = new ItemStack(material);
-    	playerSender.getInventory().addItem(itemstack);
+        playerSender.getInventory().addItem(itemstack);
         return true;
     }
 }

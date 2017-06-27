@@ -22,7 +22,7 @@ import org.bukkit.event.player.PlayerQuitEvent;
 
 public class Shop extends FreedomService
 {
-    public final String GUIName = ChatColor.GREEN + "RigelMC Shop";
+    public final String GUIName = ChatColor.AQUA + "UnraveledMC Shop";
     @Getter
     public final Map<String, ShopData> dataMap = Maps.newHashMap(); // ip,dataMap
     @Getter
@@ -44,6 +44,10 @@ public class Shop extends FreedomService
     @Override
     protected void onStop()
     {
+        for (ShopData sd : dataMap.values())
+        {
+            save(sd);
+        }
     }
     
     public void save(ShopData data)

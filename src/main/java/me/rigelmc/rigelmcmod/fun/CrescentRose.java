@@ -8,6 +8,7 @@ import me.rigelmc.rigelmcmod.util.FUtil;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.HashMap;
+import net.pravian.aero.util.Ips;
 import org.bukkit.Color;
 import org.bukkit.Material;
 import org.bukkit.Location;
@@ -33,7 +34,6 @@ import org.bukkit.entity.Firework;
 import org.bukkit.inventory.meta.FireworkMeta;
 import org.bukkit.FireworkEffect.Type;
 
-@SuppressWarnings("LocalVariableHidesMemberVariable")
 public class CrescentRose extends FreedomService
 {
     public HashMap<String, Long> cooldowns = new HashMap<String, Long>();
@@ -56,50 +56,38 @@ public class CrescentRose extends FreedomService
     {
     }
     
-    @EventHandler(priority=EventPriority.HIGH)
+    @EventHandler(priority = EventPriority.HIGH)
     public void onBulletImpact(ProjectileHitEvent event)
     {
-    	if (event.getEntity() instanceof Arrow)
-    	{
-            if (bullets.contains(event.getEntity().getEntityId()))
-            {
-                Arrow bullet = (Arrow)event.getEntity();
-                bullets.remove((Integer)bullet.getEntityId());
+        if (event.getEntity() instanceof Arrow && bullets.contains(event.getEntity().getEntityId()))
+        {
+            Arrow bullet = (Arrow)event.getEntity();
+            bullets.remove((Integer)bullet.getEntityId());
 
-                if (event.getHitEntity() != null && event.getHitEntity() instanceof LivingEntity)
+            if (event.getHitEntity() != null && event.getHitEntity() instanceof LivingEntity)
+            {
+                if (bullet.getShooter() != null && bullet.getShooter() instanceof Player)
                 {
-                    LivingEntity target = (LivingEntity)event.getHitEntity();
-                    // You never know, strange shit happens and it might not be a player
-                    if (bullet.getShooter() != null && bullet.getShooter() instanceof Player)
+                    Player shooter = (Player)bullet.getShooter();
+                    LivingEntity hitEntity = (LivingEntity)event.getHitEntity();
+                    if (event.getHitEntity() instanceof Player)
                     {
-                        /**Player shooter = (Player)bullet.getShooter();
-                        if (event.getHitEntity() instanceof Player)
+                        Player target = (Player)event.getHitEntity();
+                        if (plugin.al.isAdmin(target) && !FUtil.isExecutive(shooter.getName()))
                         {
-                            if (plugin.al.isAdmin((Player)event.getHitEntity()))
-                            {
-                                FUtil.playerMsg(shooter, "Sorry, but you can't attack admins with Crescent Rose!", ChatColor.RED);
-                                return;
-                            }
-                        }**/
-                        Player shooter = (Player)bullet.getShooter();
-                        if (event.getHitEntity() instanceof Player)
-                        {
-                            Player p = (Player)event.getHitEntity();
-                            if (p.getGameMode().equals(GameMode.CREATIVE) && !FUtil.isExecutive(shooter.getName()))
-                            {
-                                return;
-                            }
+                            FUtil.playerMsg(shooter, "Sorry, but you can't attack admins with Crescent Rose!", ChatColor.RED);
+                            return;
                         }
-                        if (event.getHitEntity() instanceof Player)
+                        if (target.getGameMode().equals(GameMode.CREATIVE) && !FUtil.isExecutive(shooter.getName()))
                         {
-                            Player p = (Player)event.getHitEntity();
-                            if (p.getGameMode().equals(GameMode.CREATIVE) && !FUtil.isExecutive(shooter.getName()))
-                            {
-                                return;
-                            }
+                            return;
                         }
-                        Location l = target.getLocation();
-                        target.setHealth(0);
+                    }
+
+                    hitEntity.setHealth(0);
+                    if (ConfigEntry.ALLOW_FIREWORK_EXPLOSIONS.getBoolean())
+                    {
+                        Location l = hitEntity.getLocation();
                         final Firework fw = (Firework) l.getWorld().spawn(l, Firework.class);
                         FireworkMeta fm = fw.getFireworkMeta();
                         fm.addEffect(FireworkEffect.builder().trail(true).with(Type.BALL_LARGE).withColor(Color.RED).build());
@@ -114,12 +102,12 @@ public class CrescentRose extends FreedomService
                             }
                         }.runTaskLater(plugin, 2L);
                     }
-               }
+                }
             }
-    	}
+        }
     }
     
-    @EventHandler(priority=EventPriority.HIGH)
+    @EventHandler(priority = EventPriority.HIGH)
     public void onPlayerRightClick(PlayerInteractEvent event)
     {
     	if (event.getAction().equals(Action.RIGHT_CLICK_AIR) || event.getAction().equals(Action.RIGHT_CLICK_BLOCK))
@@ -133,6 +121,7 @@ public class CrescentRose extends FreedomService
                     if (plugin.sl.canAfford(use_price, sd.getCoins()))
                     {
                         sd.setCoins(sd.getCoins() - use_price);
+                        plugin.sh.save(sd);
                     }
                     else
                     {
@@ -153,7 +142,7 @@ public class CrescentRose extends FreedomService
                 Arrow bullet = p.launchProjectile(Arrow.class, p.getLocation().getDirection());
                 bullets.add(bullet.getEntityId());
                 bullet.setVelocity(bullet.getVelocity().normalize().multiply(50));
-                p.getWorld().playSound(p.getLocation(), Sound.ENTITY_GENERIC_EXPLODE, 100, 2.5f);
+                p.getWorld().playSound(p.getLocation(), Sound.ENTITY_GENERIC_EXPLODE, 50, 2.5f);
 
                 // Executives don't need a cool down :^)
                 if (!FUtil.isExecutive(p.getName()))
@@ -161,7 +150,7 @@ public class CrescentRose extends FreedomService
                     cooldowns.put(p.getName(), System.currentTimeMillis());
                 }
             }
-    	}
+        }
     }
 
     @EventHandler(priority = EventPriority.HIGH)
@@ -169,8 +158,8 @@ public class CrescentRose extends FreedomService
     {
     	Entity attacker = event.getDamager();
     	Entity target = event.getEntity();
-    	if (attacker instanceof Player && target instanceof LivingEntity)
-    	{
+        if (attacker instanceof Player && target instanceof LivingEntity)
+        {
             Player p = (Player)attacker;
             ItemStack i = p.getInventory().getItemInMainHand();
             if (i != null && i.equals(getCrescentRose()))
@@ -200,13 +189,10 @@ public class CrescentRose extends FreedomService
                             return;
                         }
                     }
-                    if (target instanceof Player)
+                    if (target instanceof Player && !plugin.al.isAdmin(p) && plugin.al.isAdmin((Player)target))
                     {	
-                        if (!plugin.al.isAdmin(p) && plugin.al.isAdmin((Player)target))
-                        {
-                            FUtil.playerMsg(p, "Sorry, but you can't attack admins with Crescent Rose!", ChatColor.RED);
-                            return;
-                        }
+                        FUtil.playerMsg(p, "Sorry, but you can't attack admins with Crescent Rose!", ChatColor.RED);
+                        return;
                     }
                     // Executives don't need a cool down :^)
                     if (!FUtil.isExecutive(p.getName()))
@@ -222,25 +208,25 @@ public class CrescentRose extends FreedomService
                     t.setHealth(0);
                 }
             }
-    	}
+        }
     }
     
     public ItemStack getCrescentRose()
     {
-    	ItemStack NEEDED_A_RWBY_REFERENCE = new ItemStack(Material.DIAMOND_HOE);
-    	ItemMeta datMeta = NEEDED_A_RWBY_REFERENCE.getItemMeta();
-    	datMeta.setDisplayName(ChatColor.DARK_RED + "Crescent Rose");
-    	List<String> lore = new ArrayList();
-    	lore.add(ChatColor.RED + "Totally didn't steal this from Ruby");
-    	lore.add(ChatColor.RED + "(I really needed a RWBY reference)");
-    	lore.add(ChatColor.GOLD + "WARNING: THIS WEAPON IS OVER POWERED");
-    	lore.add(ChatColor.GOLD + "AND BY OVER POWERED I MEAN INSTANT KILL");
-    	lore.add(ChatColor.YELLOW + "It costs " + ChatColor.RED + use_price + ChatColor.YELLOW + " coins per use in order to use this item.");
-    	datMeta.setLore(lore);
-    	datMeta.addEnchant(Enchantment.DAMAGE_UNDEAD, 42069, true);
-    	datMeta.addEnchant(Enchantment.DAMAGE_ALL, 42069, true);
-    	datMeta.setUnbreakable(true);
-    	NEEDED_A_RWBY_REFERENCE.setItemMeta(datMeta);
-    	return NEEDED_A_RWBY_REFERENCE;
+        ItemStack NEEDED_A_RWBY_REFERENCE = new ItemStack(Material.DIAMOND_HOE);
+        ItemMeta datMeta = NEEDED_A_RWBY_REFERENCE.getItemMeta();
+        datMeta.setDisplayName(ChatColor.DARK_RED + "Crescent Rose");
+        List<String> lore = new ArrayList();
+        lore.add(ChatColor.RED + "Totally didn't steal this from Ruby");
+        lore.add(ChatColor.RED + "(I really needed a RWBY reference)");
+        lore.add(ChatColor.GOLD + "WARNING: THIS WEAPON IS OVER POWERED");
+        lore.add(ChatColor.GOLD + "AND BY OVER POWERED I MEAN INSTANT KILL");
+        lore.add(ChatColor.YELLOW + "It costs " + ChatColor.RED + use_price + ChatColor.YELLOW + " coins per use in order to use this item.");
+        datMeta.setLore(lore);
+        datMeta.addEnchant(Enchantment.DAMAGE_UNDEAD, 420, true);
+        datMeta.addEnchant(Enchantment.DAMAGE_ALL, 420, true);
+        datMeta.setUnbreakable(true);
+        NEEDED_A_RWBY_REFERENCE.setItemMeta(datMeta);
+        return NEEDED_A_RWBY_REFERENCE;
     }
 }

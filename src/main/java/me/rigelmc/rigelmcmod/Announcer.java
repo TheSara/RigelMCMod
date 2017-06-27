@@ -82,7 +82,7 @@ public class Announcer extends FreedomService
 
     public void announce(String message)
     {
-        FUtil.bcastMsg(prefix + message);
+        FUtil.bcastMsg(prefix + FUtil.colorize(message));
     }
 
 }

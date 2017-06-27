@@ -4,7 +4,6 @@ import java.util.Arrays;
 import me.rigelmc.rigelmcmod.admin.Admin;
 import me.rigelmc.rigelmcmod.rank.Rank;
 import me.rigelmc.rigelmcmod.util.FUtil;
-import net.pravian.aero.util.ChatUtils;
 import net.pravian.aero.util.Ips;
 import org.apache.commons.lang3.StringUtils;
 import org.bukkit.ChatColor;
@@ -13,7 +12,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 @CommandPermissions(level = Rank.OP, source = SourceType.BOTH)
-@CommandParameters(description = "Manage my admin entry", usage = "/<command> [-o <admin>] <clearips | clearip <ip> | setlogin <message> | clearlogin | setshoutcolor>")
+@CommandParameters(description = "Manage my admin entry", usage = "/<command> [-o <admin>] <clearips | clearip <ip> | setlogin <message> | clearlogin | setshoutcolor | settag | cleartag>")
 public class Command_myadmin extends FreedomCommand
 {
 
@@ -47,7 +46,7 @@ public class Command_myadmin extends FreedomCommand
             target = getAdmin(targetPlayer);
             if (target == null)
             {
-                msg("That player is not admin", ChatColor.RED);
+                msg("That player is not an admin", ChatColor.RED);
                 return true;
             }
 
@@ -143,7 +142,7 @@ public class Command_myadmin extends FreedomCommand
                 FUtil.adminAction(sender.getName(), "Setting personal login message" + (init == null ? "" : " for " + targetPlayer.getName()), false);
                 target.setLoginMessage(msg);
                 msg((init == null ? "Your" : targetPlayer.getName() + "'s") + " login message is now: ");
-                msg("> " + ChatColor.AQUA + targetPlayer.getName() + " is " + ChatUtils.colorize(target.getLoginMessage()));
+                msg("> " + ChatColor.AQUA + targetPlayer.getName() + " is " + FUtil.colorize(target.getLoginMessage()));
                 plugin.al.save();
                 plugin.al.updateTables();
                 return true;
@@ -160,24 +159,45 @@ public class Command_myadmin extends FreedomCommand
             
             case "setshoutcolor":
             {
-            	if (args.length < 2)
+                if (args.length < 2)
                 {
                     return false;
                 }
-            	
-            	if (!FUtil.isExecutive(target.getName()))
-            	{
-            		msg("Only executives can set custom shout colors!", ChatColor.RED);
-            		return true;
-            	}
-            	else
-            	{
-            		FUtil.adminAction(sender.getName(), "Setting custom shout color" + (init == null ? "" : " for " + targetPlayer.getName()), false);
+
+                if (!FUtil.isExecutive(target.getName()))
+                {
+                    msg("Only executives can set custom shout colors!", ChatColor.RED);
+                    return true;
+                }
+                else
+                {
+                    FUtil.adminAction(sender.getName(), "Setting shoutcolor" + (init == null ? "" : " for " + targetPlayer.getName()), false);
                     target.setShoutColor(args[1]);
                     plugin.al.save();
                     plugin.al.updateTables();
                     return true;
-            	}
+                }
+            }
+            
+            case "settag":
+            {
+                FUtil.adminAction(sender.getName(), "Setting personal default tag" + (init == null ? "" : " for " + targetPlayer.getName()), false);
+                String tag = StringUtils.join(args, " ", 1, args.length);
+                target.setTag(tag);
+                msg((init == null ? "Your" : targetPlayer.getName() + "'s") + " default tag is now: " + FUtil.colorize(target.getTag()));
+                plugin.al.save();
+                plugin.al.updateTables();
+                return true;
+            }
+            
+            case "cleartag":
+            {
+                FUtil.adminAction(sender.getName(), "Clearing personal default tag" + (init == null ? "" : " for " + targetPlayer.getName()), false);
+                String tag = StringUtils.join(args, " ", 1, args.length);
+                target.setTag(null);
+                plugin.al.save();
+                plugin.al.updateTables();
+                return true;
             }
 
             default:

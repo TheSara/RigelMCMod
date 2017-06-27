@@ -8,7 +8,7 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-@CommandPermissions(level = Rank.OP, source = SourceType.BOTH)
+@CommandPermissions(level = Rank.SUPER_ADMIN, source = SourceType.BOTH)
 @CommandParameters(description = "Manage the whitelist.", usage = "/<command> <on | off | list | count | add <player> | remove <player> | addall | purge>")
 public class Command_whitelist extends FreedomCommand
 {
@@ -53,12 +53,6 @@ public class Command_whitelist extends FreedomCommand
             msg("Total whitelisted players: " + totalWPs);
 
             return true;
-        }
-
-        // all commands past this line are superadmin-only
-        if (!(senderIsConsole || plugin.al.isAdmin(sender)))
-        {
-            return noPerms();
         }
 
         // on

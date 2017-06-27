@@ -2,6 +2,7 @@ package me.rigelmc.rigelmcmod;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.ArrayList;
 import me.rigelmc.rigelmcmod.util.FLog;
 import me.rigelmc.rigelmcmod.util.FUtil;
 import net.minecraft.server.v1_12_R1.EntityPlayer;
@@ -74,9 +75,15 @@ public class ServerInterface extends FreedomService
         return getServer().getPlayerList().getHasWhitelist();
     }
 
-    public List<?> getWhitelisted()
+    public List<String> getWhitelisted()
     {
-        return Arrays.asList(getServer().getPlayerList().getWhitelisted());
+        // Must convert the whitelist to lowercase manually as by default they are not
+        List<String> whitelist = new ArrayList();
+        for (String username : Arrays.asList(getServer().getPlayerList().getWhitelisted()))
+        {
+            whitelist.add(username.toLowerCase());
+        }
+        return whitelist;
     }
 
     public String getVersion()

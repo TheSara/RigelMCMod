@@ -51,13 +51,13 @@ public class RankManager extends FreedomService
         }
 
         // TF Developers always show up
-        if (FUtil.DEVELOPERS.contains(player.getName()) && !ConfigEntry.SERVER_OWNERS.getList().contains(player.getName()))
+        if (FUtil.TFDEVS.contains(player.getName()) && !FUtil.UMCDEVS.contains(player.getName()) && !ConfigEntry.SERVER_OWNERS.getList().contains(player.getName()) && !plugin.al.isAdminImpostor(player))
         {
-            return Title.DEVELOPER;
+            return Title.TFDEV;
         }
         
         // UMC Developers always show up
-        if (FUtil.UMCDEVS.contains(player.getName()) && !ConfigEntry.SERVER_OWNERS.getList().contains(player.getName()) && !ConfigEntry.SERVER_COOWNERS.getList().contains(player.getName()) && !ConfigEntry.SERVER_RETIREES.getList().contains(player.getName()))
+        if (FUtil.UMCDEVS.contains(player.getName()) && !ConfigEntry.SERVER_OWNERS.getList().contains(player.getName()) && !plugin.al.isAdminImpostor(player))
         {
             return Title.UMCDEV;
         }
@@ -70,6 +70,12 @@ public class RankManager extends FreedomService
                 return Title.MASTER_BUILDER;
             }
         }
+        
+        // If the player is a donator, display thar
+        if (ConfigEntry.SERVER_DONORS.getList().contains(player.getName()))
+        {
+            return Title.DONOR;
+        }
 
         final Rank rank = getRank(player);
 
@@ -78,35 +84,17 @@ public class RankManager extends FreedomService
         {
             return rank;
         }
-        
-        // If the player's a co-owner, display that
-        if (ConfigEntry.SERVER_COOWNERS.getList().contains(player.getName()))
-        {
-            return Title.COOWNER;
-        }
 
         // If the player's an owner, display that
-        if (ConfigEntry.SERVER_OWNERS.getList().contains(player.getName()))
+        if (ConfigEntry.SERVER_OWNERS.getList().contains(player.getName()) && !plugin.al.isAdminImpostor(player))
         {
             return Title.OWNER;
         }
         
         // If the player's an executive, display that
-        if (ConfigEntry.SERVER_EXECS.getList().contains(player.getName()) && !FUtil.UMCDEVS.contains(player.getName()) && !ConfigEntry.SERVER_OWNERS.getList().contains(player.getName()) && !ConfigEntry.SERVER_OWNERS.getList().contains(player.getName()) && !ConfigEntry.SERVER_RETIREES.getList().contains(player.getName()))
+        if (ConfigEntry.SERVER_EXECS.getList().contains(player.getName()) && !FUtil.UMCDEVS.contains(player.getName()) && !ConfigEntry.SERVER_OWNERS.getList().contains(player.getName()) && !ConfigEntry.SERVER_OWNERS.getList().contains(player.getName()) && !plugin.al.isAdminImpostor(player))
         {
             return Title.EXEC;
-        }
-        
-        // If the player is retired, display that
-        if (ConfigEntry.SERVER_RETIREES.getList().contains(player.getName()))
-        {
-            return Title.RETIRED;
-        }
-        
-        // If the player is a donator, display thar
-        if (ConfigEntry.SERVER_DONORS.getList().contains(player.getName()))
-        {
-            return Title.DONOR;
         }
         
         return rank;
@@ -197,7 +185,7 @@ public class RankManager extends FreedomService
         }
 
         // Set display
-        if (isAdmin || FUtil.DEVELOPERS.contains(player.getName()))
+        if (isAdmin || FUtil.TFDEVS.contains(player.getName()) || FUtil.UMCDEVS.contains(player.getName()))
         {
             final Displayable display = getDisplay(player);
             String loginMsg = display.getColoredLoginMessage();
@@ -213,6 +201,14 @@ public class RankManager extends FreedomService
 
             FUtil.bcastMsg(ChatColor.AQUA + player.getName() + " is " + loginMsg);
             plugin.pl.getPlayer(player).setTag(display.getColoredTag());
+            if (plugin.al.isAdmin(player))
+            {
+                Admin admin = plugin.al.getAdmin(player);
+                if (admin.getTag() != null)
+                {
+                    plugin.pl.getPlayer(player).setTag(FUtil.colorize(admin.getTag()));
+                }
+            }
 
             String displayName = display.getColor() + player.getName();
             try

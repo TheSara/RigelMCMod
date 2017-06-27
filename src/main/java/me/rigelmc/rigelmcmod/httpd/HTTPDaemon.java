@@ -68,11 +68,11 @@ public class HTTPDaemon extends FreedomService
 
             if (httpd.isAlive())
             {
-                FLog.info("TFM HTTPd started. Listening on port: " + httpd.getListeningPort());
+                FLog.info("HTTP daemon started. Listening on port: " + httpd.getListeningPort());
             }
             else
             {
-                FLog.info("Error starting TFM HTTPd.");
+                FLog.info("Error starting the HTTP daemon.");
             }
         }
         catch (IOException ex)
@@ -91,7 +91,7 @@ public class HTTPDaemon extends FreedomService
 
         httpd.stop();
 
-        FLog.info("TFM HTTPd stopped.");
+        FLog.info("HTTP daemon stopped.");
     }
 
     private void module(String name, Class<? extends HTTPDModule> clazz, boolean async)

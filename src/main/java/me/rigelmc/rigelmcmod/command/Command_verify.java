@@ -45,9 +45,12 @@ public class Command_verify extends FreedomCommand
         {
             String code = "";
             Random random = new Random();
-            for (int i = 0; i < 10; i++) code += random.nextInt(10);
+            for (int i = 0; i < 10; i++)
+            {
+                code += random.nextInt(10);
+            }
             plugin.dc.VERIFY_CODES.add(code);
-            plugin.dc.sendMessage(plugin.dc.bot.getUserById(admin.getDiscordID()).getPrivateChannel(), "A user with the ip `" + Ips.getIp(playerSender) + "`. Please type the following code in this private message channel: `" + code + "`");
+            plugin.dc.sendMessage(plugin.dc.bot.getUserById(admin.getDiscordID()).getPrivateChannel(), "A user with the ip `" + Ips.getIp(playerSender) + "` has sent a verification request. Please run the following in-game command: `/verify " + code + "`");
             msg("A verification code has been sent to your account, please copy the code and do /verify <code>", ChatColor.GREEN);
         }
         else

@@ -100,7 +100,7 @@ public class Command_shop extends FreedomCommand
             l.add(ChatColor.GOLD + "Price: " + (co ? ChatColor.DARK_GREEN : ChatColor.RED) + price);
             if (!co)
             {
-                l.add(ChatColor.RED + "You can not offord this item!");
+                l.add(ChatColor.RED + "You can not afford this item!");
                 l.add(ChatColor.RED + "You need " + amountNeeded(price) + " more coins to buy this item.");
             }
         }
@@ -122,10 +122,10 @@ public class Command_shop extends FreedomCommand
         Shop layout:
         
         Dimensions: 9x4
-        Key: c = Chat Color, l = login message, t = Thor's hammer, r = Crescent Rose, $ = coins}
+        Key: c = Chat Color, l = Login Message, t = Thor's Hammer, r = Crescent Rose, m = Minigun $ = Coins}
 
         ---------
         -c-l-t-r-
-        ---------
+        --m------
         --------$
 */

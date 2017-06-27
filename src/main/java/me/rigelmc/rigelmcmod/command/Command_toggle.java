@@ -9,7 +9,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 @CommandPermissions(level = Rank.SUPER_ADMIN, source = SourceType.BOTH)
-@CommandParameters(description = "Toggles TotalFreedomMod settings", usage = "/<command> [option] [value] [value]")
+@CommandParameters(description = "Toggles config settings", usage = "/<command> [option] [value] [value]")
 public class Command_toggle extends FreedomCommand
 {
 
@@ -30,6 +30,7 @@ public class Command_toggle extends FreedomCommand
             msg("- entitywipe");
             msg("- nonuke [range] [count]");
             msg("- explosives [radius]");
+            msg("- fireworks");
             return false;
         }
 
@@ -85,6 +86,12 @@ public class Command_toggle extends FreedomCommand
         if (args[0].equals("entitywipe"))
         {
             toggle("Automatic entity wiping is", ConfigEntry.AUTO_ENTITY_WIPE);
+            return true;
+        }
+        
+        if (args[0].equals("fireworks"))
+        {
+            toggle("Firework explosions are", ConfigEntry.ALLOW_FIREWORK_EXPLOSIONS);
             return true;
         }
 

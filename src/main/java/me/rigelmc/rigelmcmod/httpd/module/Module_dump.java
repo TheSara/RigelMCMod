@@ -12,7 +12,6 @@ import me.rigelmc.rigelmcmod.util.FLog;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang3.StringUtils;
 import static me.rigelmc.rigelmcmod.httpd.HTMLGenerationTools.list;
-import static me.rigelmc.rigelmcmod.httpd.HTMLGenerationTools.list;
 
 public class Module_dump extends HTTPDModule
 {
@@ -111,6 +110,6 @@ public class Module_dump extends HTTPDModule
     @Override
     public String getTitle()
     {
-        return "RigelMCMod :: Request Debug Dumper";
+        return "UnraveledMCMod :: Request Debug Dumper";
     }
 }

@@ -16,14 +16,13 @@ import org.bukkit.event.player.PlayerTeleportEvent;
 import org.bukkit.event.weather.ThunderChangeEvent;
 import org.bukkit.event.weather.WeatherChangeEvent;
 import static me.rigelmc.rigelmcmod.util.FUtil.playerMsg;
-import static me.rigelmc.rigelmcmod.util.FUtil.playerMsg;
 
 public class WorldManager extends FreedomService
 {
 
     public Flatlands flatlands;
     public AdminWorld adminworld;
-    
+
     public WorldManager(RigelMCMod plugin)
     {
         super(plugin);
@@ -37,7 +36,7 @@ public class WorldManager extends FreedomService
     {
         flatlands.getWorld();
         adminworld.getWorld();
-        
+
         // Disable weather
         if (ConfigEntry.DISABLE_WEATHER.getBoolean())
         {

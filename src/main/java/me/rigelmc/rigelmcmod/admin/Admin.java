@@ -20,6 +20,7 @@ public class Admin implements ConfigLoadable, ConfigSavable, Validatable
 {
 
     @Getter
+    @Setter
     private String configKey;
     @Getter
     @Setter
@@ -31,6 +32,7 @@ public class Admin implements ConfigLoadable, ConfigSavable, Validatable
     @Setter
     private Rank rank = Rank.SUPER_ADMIN;
     @Getter
+    @Setter
     private final List<String> ips = Lists.newArrayList();
     @Getter
     @Setter
@@ -44,6 +46,9 @@ public class Admin implements ConfigLoadable, ConfigSavable, Validatable
     @Getter
     @Setter
     private String discordID = null;
+    @Getter
+    @Setter
+    private String tag = null;
 
     public Admin(Player player)
     {
@@ -69,7 +74,8 @@ public class Admin implements ConfigLoadable, ConfigSavable, Validatable
                 .append("- Shout Color: ").append(shoutColor).append("\n")
                 .append("- Rank: ").append(rank.getName()).append("\n")
                 .append("- Is Active: ").append(active).append("\n")
-                .append("- Discord ID: ").append(discordID);
+                .append("- Discord ID: ").append(discordID).append("\n")
+                .append("- Join Tag: ").append(tag);
 
         return output.toString();
     }
@@ -94,6 +100,7 @@ public class Admin implements ConfigLoadable, ConfigSavable, Validatable
         loginMessage = cs.getString("login_message", null);
         shoutColor = cs.getString("shout_color", null);
         discordID = cs.getString("discord_id", null);
+        tag = cs.getString("tag", null);
     }
 
     @Override
@@ -108,6 +115,7 @@ public class Admin implements ConfigLoadable, ConfigSavable, Validatable
         cs.set("login_message", loginMessage);
         cs.set("shout_color", shoutColor);
         cs.set("discord_id", discordID);
+        cs.set("tag", tag);
     }
 
     public boolean isAtLeast(Rank pRank)
@@ -119,7 +127,7 @@ public class Admin implements ConfigLoadable, ConfigSavable, Validatable
     {
         return loginMessage != null && !loginMessage.isEmpty();
     }
-    
+
     public boolean hasCustomShoutColor()
     {
         return shoutColor != null && !shoutColor.isEmpty();

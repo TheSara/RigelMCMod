@@ -11,21 +11,24 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
-import static me.rigelmc.rigelmcmod.util.FUtil.playerMsg;
-
 import java.util.Arrays;
 import java.util.List;
-import static me.rigelmc.rigelmcmod.util.FUtil.playerMsg;
+import org.bukkit.Sound;
+import org.bukkit.SoundCategory;
 
 public class ChatManager extends FreedomService
 {
     public static ChatColor acc = ChatColor.GOLD;
     public static boolean acr = false;
     public static boolean acn = false;
-    public static final List<String> GRATIS_IPS = Arrays.asList(new String[]
-    	    {
-    	        "myserver.gs", "serv.nu", "g-s.nu", "mygs.co"
-    	    });
+    // Putting an end to free hosted server advertisements
+    public static final List<String> DISGUSTING_HOST_DOMAINS = Arrays.asList(new String[]
+            {
+                "my-serv.com", "mymcserver.org", "serv.gs", "myserver.gs", "g-s.nu", "mcserv.me",
+                "mcpro.io", "1337srv.com", "mcnetwork.me", "serv.nu", "mygs.co", "mchosting.pro",
+                "server-minecraft.pro", "mcraft.pro", "mcserv.pro", "mchost.pro", "crafted.pro", 
+                "cubed.pro", "minecraft-crafting.pro", "aternos.me"
+            });
 
     public ChatManager(RigelMCMod plugin)
     {
@@ -111,11 +114,11 @@ public class ChatManager extends FreedomService
         
         if (!plugin.al.isAdmin(player))
         {
-            for (String ip : GRATIS_IPS)
+            for (String domain : DISGUSTING_HOST_DOMAINS)
             {
-                if (ChatColor.stripColor(message).toLowerCase().contains(ip))
+                if (ChatColor.stripColor(message).toLowerCase().contains(domain))
                 {
-                    player.sendMessage(ChatColor.RED + "Ew, stop trying to advertise your horrible server \"pro\" server. Get real hosting.");
+                    player.sendMessage(ChatColor.RED + "Ew, stop trying to advertise that server ran on a terrible host. Get real hosting.");
                     event.setCancelled(true);
                     return;
                 }
@@ -141,6 +144,16 @@ public class ChatManager extends FreedomService
         if (tag != null && !tag.isEmpty())
         {
             format = tag.replace("%", "%%") + " " + format;
+        }
+        
+        // Check for mentions
+        Boolean mentionEveryone = ChatColor.stripColor(message).toLowerCase().contains("@everyone") && plugin.al.isAdmin(player);
+        for (Player p : server.getOnlinePlayers())
+        {
+            if (ChatColor.stripColor(message).toLowerCase().contains("@" + p.getName().toLowerCase()) || mentionEveryone)
+            {
+                p.playSound(p.getLocation(), Sound.BLOCK_NOTE_PLING, SoundCategory.MASTER, 1337F, 0.9F);
+            }
         }
 
         // Set format
@@ -187,7 +200,7 @@ public class ChatManager extends FreedomService
         {
             if (plugin.al.isAdmin(player))
             {
-                playerMsg(player, ChatColor.RED + "[REPORTS] " + ChatColor.GOLD + reporter.getName() + " has reported " + reported.getName() + " for " + report);
+                FUtil.playerMsg(player, ChatColor.RED + "[REPORTS] " + ChatColor.GOLD + reporter.getName() + " has reported " + reported.getName() + " for " + report);
             }
         }
     }

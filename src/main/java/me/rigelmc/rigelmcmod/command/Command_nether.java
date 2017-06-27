@@ -1,7 +1,6 @@
 package me.rigelmc.rigelmcmod.command;
 
 import me.rigelmc.rigelmcmod.rank.Rank;
-import me.rigelmc.rigelmcmod.util.FUtil;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;

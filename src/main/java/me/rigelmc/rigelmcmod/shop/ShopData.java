@@ -45,7 +45,7 @@ public class ShopData implements ConfigLoadable, ConfigSavable, Validatable
     @Setter
     private boolean minigun = false;
     private String level = "PEASANT";
-    
+
     public ShopData(Player player)
     {
         this(player.getName());
@@ -68,6 +68,8 @@ public class ShopData implements ConfigLoadable, ConfigSavable, Validatable
         this.loginMessage = cs.getString("loginMessage", loginMessage);
         this.thorHammer = cs.getBoolean("thorHammer", thorHammer);
         this.crescentRose = cs.getBoolean("crescentRose", crescentRose);
+        this.minigun = cs.getBoolean("minigun", minigun);
+        this.level = cs.getString("level", level);
         this.santabag = cs.getBoolean ("santabag", santabag);
     }
 
@@ -83,6 +85,8 @@ public class ShopData implements ConfigLoadable, ConfigSavable, Validatable
         cs.set("loginMessage", loginMessage);
         cs.set("thorHammer", thorHammer);
         cs.set("crescentRose", crescentRose);
+        cs.set("minigun", minigun);
+        cs.set("level", level);
         cs.set("santabag", santabag);
     }
 
@@ -101,6 +105,7 @@ public class ShopData implements ConfigLoadable, ConfigSavable, Validatable
     {
         return ips.remove(ip);
     }
+    
     public Level getLevel()
     {
         return Level.findLevel(level);
@@ -110,12 +115,14 @@ public class ShopData implements ConfigLoadable, ConfigSavable, Validatable
     {
         level = lvl.toString();
     }
+
     @Override
     public boolean isValid()
     {
         return username != null
                 && !ips.isEmpty()
-                && !loginMessage.isEmpty();
+                && !loginMessage.isEmpty()
+                && !level.isEmpty();
     }
 
     public boolean issantabag()

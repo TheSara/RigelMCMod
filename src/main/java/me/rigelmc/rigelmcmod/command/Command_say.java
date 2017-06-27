@@ -41,15 +41,15 @@ public class Command_say extends FreedomCommand
             }
         }
         
-        String color = "&b";
+        String color = "&d";
         
         if (!senderIsConsole)
         {
-        	 Admin admin = plugin.al.getAdmin(playerSender);
-        	 if (admin.hasCustomShoutColor())
-        	 {
-        		 color = admin.getShoutColor();
-        	 }
+            Admin admin = plugin.al.getAdmin(playerSender);
+            if (admin.hasCustomShoutColor())
+            {
+                color = admin.getShoutColor();
+            }
         }
         
         FUtil.bcastMsg(String.format("%s[Shout:%s] %s", FUtil.colorize(color), sender.getName(), message));

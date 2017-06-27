@@ -1,4 +1,5 @@
 package me.rigelmc.rigelmcmod.leveling;
+
 import me.rigelmc.rigelmcmod.FreedomService;
 import me.rigelmc.rigelmcmod.RigelMCMod;
 import me.rigelmc.rigelmcmod.shop.ShopData;

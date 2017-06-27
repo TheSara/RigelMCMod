@@ -1,6 +1,7 @@
 package me.rigelmc.rigelmcmod;
 
 import me.rigelmc.rigelmcmod.util.FLog;
+import me.rigelmc.rigelmcmod.config.ConfigEntry;
 import org.bukkit.ChatColor;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
@@ -10,13 +11,14 @@ import java.util.List;
 import java.util.Scanner;
 import java.io.File;
 import java.io.FileNotFoundException;
-import me.rigelmc.rigelmcmod.config.ConfigEntry;
+import java.io.IOException;
+import me.rigelmc.rigelmcmod.util.FUtil;
     
 
 public class AntiSpamBot extends FreedomService
 {
     
-    public static final List<String> SPAMBOT_IPS = new ArrayList();
+    public final List<String> SPAMBOT_IPS = new ArrayList();
     
     public AntiSpamBot(RigelMCMod plugin)
     {
@@ -28,24 +30,37 @@ public class AntiSpamBot extends FreedomService
     {
         try
         {
-            Scanner scanner = new Scanner(new File(plugin.getDataFolder().getPath() + "/deathbotips.txt"));
-            while(scanner.hasNextLine())
+            loadIps();
+        }
+        catch (FileNotFoundException e)
+        {
+            try
             {
-                SPAMBOT_IPS.add(scanner.nextLine());
+                FUtil.copyFile(plugin.getResource("deathbotips.txt"), "deathbotips.txt");
+                loadIps();
+            }
+            catch (IOException ex)
+            {
+                FLog.warning("Failed to copy deathbotips.txt, disabling Anti-SpamBot");
+                this.unregister();
             }
         }
-        catch(FileNotFoundException e)
-        {
-            FLog.warning("The deathbotips.txt file was not found!");
-            this.unregister();
-        }
-        FLog.info("Loaded " + SPAMBOT_IPS.size() + " spambot ips");
     }
 
     @Override
     protected void onStop()
     {
         SPAMBOT_IPS.clear();
+    }
+    
+    public void loadIps() throws FileNotFoundException
+    {
+        Scanner scanner = new Scanner(new File(plugin.getDataFolder().getPath() + "/deathbotips.txt"));
+        while (scanner.hasNextLine())
+        {
+            SPAMBOT_IPS.add(scanner.nextLine());
+        }
+        FLog.info("Loaded " + SPAMBOT_IPS.size() + " spambot ips");
     }
     
     @EventHandler(priority = EventPriority.HIGHEST)

@@ -37,7 +37,10 @@ public class Command_linkdiscord extends FreedomCommand
         {
             String code = "";
             Random random = new Random();
-            for (int i = 0; i < 5; i++) code += random.nextInt(10);
+            for (int i = 0; i < 5; i++)   
+            {
+                code += random.nextInt(10);
+            }
             plugin.dc.LINK_CODES.put(code, admin);
             msg("Your linking code is " + ChatColor.GREEN + code, ChatColor.AQUA);
         }

@@ -14,14 +14,14 @@ public class Command_crescentrose extends FreedomCommand
     @Override
     public boolean run(CommandSender sender, Player playerSender, Command cmd, String commandLabel, String[] args, boolean senderIsConsole)
     {
-    	ShopData sd = plugin.sh.getData(playerSender);
-    	if (!sd.isCrescentRose())
-    	{
-    		msg("You have not yet purchased Crescent Rose from the shop!", ChatColor.RED);
-    		return true;
-    	}
-    	playerSender.getInventory().addItem(plugin.cr.getCrescentRose());
-    	msg("You have been given Crescent Rose!", ChatColor.GREEN);
+        ShopData sd = plugin.sh.getData(playerSender);
+        if (!sd.isCrescentRose())
+        {
+            msg("You have not yet purchased Crescent Rose from the shop!", ChatColor.RED);
+            return true;
+        }
+        playerSender.getInventory().addItem(plugin.cr.getCrescentRose());
+        msg("You have been given Crescent Rose!", ChatColor.GREEN);
         return true;
     }
 }

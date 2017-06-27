@@ -3,6 +3,7 @@ package me.rigelmc.rigelmcmod.banning;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import com.google.common.collect.Sets;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Iterator;
@@ -17,6 +18,7 @@ import me.rigelmc.rigelmcmod.util.FLog;
 import me.rigelmc.rigelmcmod.util.FUtil;
 import net.pravian.aero.config.YamlConfig;
 import net.pravian.aero.util.Ips;
+import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
@@ -229,7 +231,7 @@ public class BanManager extends FreedomService
         return size;
     }
 
-    @EventHandler(priority = EventPriority.LOW)
+    @EventHandler(priority = EventPriority.NORMAL)
     public void onPlayerLogin(PlayerLoginEvent event)
     {
         final String username = event.getPlayer().getName();
@@ -298,6 +300,21 @@ public class BanManager extends FreedomService
                 }
             }
         }
+    }
+    
+    public void eject(Player player, String reason)
+    {
+        Ban ban = Ban.forPlayerName(player.getName(), null, null, ChatColor.RED + reason);
+        final List<String> ips = new ArrayList<>();
+        final PlayerData entry = plugin.pl.getData(player);
+        ips.addAll(entry.getIps());
+        for (String ip : ips)
+        {
+            ban.addIp(ip);
+            ban.addIp(FUtil.getFuzzyIp(ip));
+        }
+        addBan(ban);
+        player.kickPlayer(ban.bakeKickMessage());
     }
 
 }

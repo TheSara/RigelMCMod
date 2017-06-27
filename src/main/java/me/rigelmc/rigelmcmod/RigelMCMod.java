@@ -2,22 +2,21 @@ package me.rigelmc.rigelmcmod;
 
 import me.rigelmc.rigelmcmod.fun.Trailer;
 import java.io.File;
-import java.io.IOException;
 import me.rigelmc.rigelmcmod.admin.AdminList;
 import me.rigelmc.rigelmcmod.banning.BanManager;
 import me.rigelmc.rigelmcmod.banning.PermbanList;
 import me.rigelmc.rigelmcmod.blocking.BlockBlocker;
+import me.rigelmc.rigelmcmod.blocking.DisguiseBlocker;
 import me.rigelmc.rigelmcmod.blocking.EventBlocker;
 import me.rigelmc.rigelmcmod.blocking.InteractBlocker;
-import me.rigelmc.rigelmcmod.blocking.ItemBlocker;
 import me.rigelmc.rigelmcmod.blocking.MobBlocker;
 import me.rigelmc.rigelmcmod.blocking.PotionBlocker;
 import me.rigelmc.rigelmcmod.blocking.command.CommandBlocker;
 import me.rigelmc.rigelmcmod.bridge.BukkitTelnetBridge;
+import me.rigelmc.rigelmcmod.bridge.CoreProtectBridge;
 import me.rigelmc.rigelmcmod.bridge.EssentialsBridge;
 import me.rigelmc.rigelmcmod.bridge.LibsDisguisesBridge;
 import me.rigelmc.rigelmcmod.bridge.WorldEditBridge;
-import me.rigelmc.rigelmcmod.bridge.CoreProtectBridge;
 import me.rigelmc.rigelmcmod.caging.Cager;
 import me.rigelmc.rigelmcmod.command.CommandLoader;
 import me.rigelmc.rigelmcmod.config.MainConfig;
@@ -29,11 +28,10 @@ import me.rigelmc.rigelmcmod.fun.Lightning;
 import me.rigelmc.rigelmcmod.fun.CrescentRose;
 import me.rigelmc.rigelmcmod.fun.MP44;
 import me.rigelmc.rigelmcmod.fun.Minigun;
-import me.rigelmc.rigelmcmod.leveling.LevelManager;
 import me.rigelmc.rigelmcmod.httpd.HTTPDaemon;
+import me.rigelmc.rigelmcmod.leveling.LevelManager;
 import me.rigelmc.rigelmcmod.player.PlayerList;
 import me.rigelmc.rigelmcmod.rank.RankManager;
-import me.rigelmc.rigelmcmod.rollback.RollbackManager;
 import me.rigelmc.rigelmcmod.shop.Shop;
 import me.rigelmc.rigelmcmod.shop.ShopGUIListener;
 import me.rigelmc.rigelmcmod.util.FLog;
@@ -45,7 +43,6 @@ import net.pravian.aero.plugin.AeroPlugin;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.scheduler.BukkitRunnable;
-import org.mcstats.Metrics;
 
 public class RigelMCMod extends AeroPlugin<RigelMCMod>
 {
@@ -53,9 +50,9 @@ public class RigelMCMod extends AeroPlugin<RigelMCMod>
     public static final String CONFIG_FILENAME = "config.yml";
     //
     public static String pluginName;
-    public static String pluginVersion = "2.0";
-    public static String buildDate = "5/7/2017";
-    public static String compiledBy = "LightWarp";
+    public static String pluginVersion = "2.0.0";
+    public static String buildDate = "06/24/2017";
+    public static String compiledBy = "CreeperSeth";
     //
     public MainConfig config;
     //
@@ -71,9 +68,9 @@ public class RigelMCMod extends AeroPlugin<RigelMCMod>
     public CommandBlocker cb;
     public EventBlocker eb;
     public BlockBlocker bb;
+    public DisguiseBlocker db;
     public MobBlocker mb;
     public InteractBlocker ib;
-    public ItemBlocker itb;
     public PotionBlocker pb;
     public LoginProcess lp;
     public AntiNuke nu;
@@ -91,7 +88,6 @@ public class RigelMCMod extends AeroPlugin<RigelMCMod>
     public ProtectArea pa;
     public ServiceChecker sc;
     public GameRuleHandler gr;
-    public RollbackManager rb;
     public CommandSpy cs;
     public Cager ca;
     public Freezer fm;
@@ -99,7 +95,6 @@ public class RigelMCMod extends AeroPlugin<RigelMCMod>
     public Muter mu;
     public Fuckoff fo;
     public AutoKick ak;
-    public AutoEject ae;
     public MovementValidator mv;
     public EntityWiper ew;
     public ServerPing sp;
@@ -135,7 +130,7 @@ public class RigelMCMod extends AeroPlugin<RigelMCMod>
     public void enable()
     {
         FLog.info("Created by Madgeek1450 and Prozza");
-        FLog.info("Modified by CreeperSeth, AwesomePinch, aggelosQQ, LightWarp and santadeath");
+        FLog.info("Modified by CreeperSeth, AwesomePinch, and aggelosQQ");
         FLog.info("Version " + pluginVersion);
 
         final MethodTimer timer = new MethodTimer();
@@ -167,13 +162,14 @@ public class RigelMCMod extends AeroPlugin<RigelMCMod>
         lv = services.registerService(LogViewer.class);
         al = services.registerService(AdminList.class);
         rm = services.registerService(RankManager.class);
+        lvm = services.registerService(LevelManager.class);
         cl = services.registerService(CommandLoader.class);
         cb = services.registerService(CommandBlocker.class);
         eb = services.registerService(EventBlocker.class);
         bb = services.registerService(BlockBlocker.class);
+        db = services.registerService(DisguiseBlocker.class);
         mb = services.registerService(MobBlocker.class);
         ib = services.registerService(InteractBlocker.class);
-        itb = services.registerService(ItemBlocker.class);
         pb = services.registerService(PotionBlocker.class);
         lp = services.registerService(LoginProcess.class);
         nu = services.registerService(AntiNuke.class);
@@ -194,7 +190,6 @@ public class RigelMCMod extends AeroPlugin<RigelMCMod>
         gr = services.registerService(GameRuleHandler.class);
 
         // Single admin utils
-        rb = services.registerService(RollbackManager.class);
         cs = services.registerService(CommandSpy.class);
         ca = services.registerService(Cager.class);
         fm = services.registerService(Freezer.class);
@@ -202,7 +197,6 @@ public class RigelMCMod extends AeroPlugin<RigelMCMod>
         mu = services.registerService(Muter.class);
         fo = services.registerService(Fuckoff.class);
         ak = services.registerService(AutoKick.class);
-        ae = services.registerService(AutoEject.class);
 
         mv = services.registerService(MovementValidator.class);
         ew = services.registerService(EntityWiper.class);
@@ -225,6 +219,7 @@ public class RigelMCMod extends AeroPlugin<RigelMCMod>
         // Start bridges
         bridges = new ServiceManager<>(plugin);
         btb = bridges.registerService(BukkitTelnetBridge.class);
+        cpb = bridges.registerService(CoreProtectBridge.class);
         esb = bridges.registerService(EssentialsBridge.class);
         ldb = bridges.registerService(LibsDisguisesBridge.class);
         web = bridges.registerService(WorldEditBridge.class);
@@ -232,17 +227,6 @@ public class RigelMCMod extends AeroPlugin<RigelMCMod>
 
         timer.update();
         FLog.info("Version " + pluginVersion + " for " + ServerInterface.COMPILE_NMS_VERSION + " enabled in " + timer.getTotal() + "ms");
-
-        // Metrics @ http://mcstats.org/plugin/TotalFreedomMod
-        try
-        {
-            final Metrics metrics = new Metrics(plugin);
-            metrics.start();
-        }
-        catch (IOException ex)
-        {
-            FLog.warning("Failed to submit metrics data: " + ex.getMessage());
-        }
 
         // Add spawnpoints later - https://github.com/TotalFreedom/TotalFreedomMod/issues/438
         new BukkitRunnable()

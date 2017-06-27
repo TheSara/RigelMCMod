@@ -12,6 +12,8 @@ import org.bukkit.entity.Player;
 @CommandParameters(description = "Toggle lightning power", usage = "/<command> [amount]")
 public class Command_lightning extends FreedomCommand
 {
+    
+    int max_count = 50;
 
     @Override
     public boolean run(CommandSender sender, Player playerSender, Command cmd, String commandLabel, String[] args, boolean senderIsConsole)
@@ -25,7 +27,7 @@ public class Command_lightning extends FreedomCommand
         {
             try
             {
-                Lightning.amount = Math.max(1, Math.min(30, Integer.parseInt(args[0])));
+                Lightning.amount = Math.max(1, Math.min(max_count, Integer.parseInt(args[0])));
                 msg("Set lightning bolt count to " + Lightning.amount);
                 return true;
             }

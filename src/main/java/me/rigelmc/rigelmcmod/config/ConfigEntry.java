@@ -18,6 +18,7 @@ public enum ConfigEntry
     ALLOW_LAVA_PLACE(Boolean.class, "allow.lava_place"),
     ALLOW_TNT_MINECARTS(Boolean.class, "allow.tnt_minecarts"),
     ALLOW_WATER_PLACE(Boolean.class, "allow.water_place"),
+    ALLOW_FIREWORK_EXPLOSIONS(Boolean.class, "allow.firework_explosions"),
     //
     MOB_LIMITER_ENABLED(Boolean.class, "moblimiter.enabled"),
     MOB_LIMITER_MAX(Integer.class, "moblimiter.max"),
@@ -32,8 +33,6 @@ public enum ConfigEntry
     //
     SERVER_NAME(String.class, "server.name"),
     SERVER_ADDRESS(String.class, "server.address"),
-    SERVER_RETIREES(List.class, "server.retired"),
-    SERVER_COOWNERS(List.class, "server.coowners"),
     SERVER_OWNERS(List.class, "server.owners"),
     SERVER_EXECS(List.class, "server.execs"),
     SERVER_MASTER_BUILDERS(List.class, "server.master_builders"),
@@ -57,8 +56,6 @@ public enum ConfigEntry
     SHOP_THOR_HAMMER_PRICE(Integer.class, "shop.thor_hammer_price"),
     SHOP_CRESCENT_ROSE_PRICE(Integer.class, "shop.crescent_rose_price"),
     SHOP_CRESCENT_ROSE_USE_PRICE(Integer.class, "shop.crescent_rose_use_price"),
-    SHOP_SANTABAG_PRICE(Integer.class, "shop.santabag_price"),
-    SHOP_SANTABAG_USE_PRICE(Integer.class, "shop.santabag_use_price"),
     SHOP_MINIGUN_PRICE(Integer.class, "shop.minigun_price"),
     //
     ADMIN_LOGIN_MESSAGE(List.class, "admins.admin_login_message"),
@@ -200,13 +197,5 @@ public enum ConfigEntry
             }
         }
         return null;
-    }
-
-    public static class SHOP_SANTABAG_PRICE
-    {
-
-        public SHOP_SANTABAG_PRICE()
-        {
-        }
     }
 }

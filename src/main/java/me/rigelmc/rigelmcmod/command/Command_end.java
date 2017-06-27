@@ -1,14 +1,13 @@
 package me.rigelmc.rigelmcmod.command;
 
 import me.rigelmc.rigelmcmod.rank.Rank;
-import me.rigelmc.rigelmcmod.util.FUtil;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 @CommandPermissions(level = Rank.NON_OP, source = SourceType.ONLY_IN_GAME)
-@CommandParameters(description = "Goto the ender / \"The End\".", usage = "/<command>")
-public class Command_ender extends FreedomCommand
+@CommandParameters(description = "Goto the end.", usage = "/<command>")
+public class Command_end extends FreedomCommand
 {
 
     @Override

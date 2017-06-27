@@ -67,7 +67,7 @@ public class AntiSpam extends FreedomService
         final FPlayer playerdata = plugin.pl.getPlayerSync(player);
 
         // Check for spam
-        if (playerdata.incrementAndGetMsgCount() > MSG_PER_CYCLE)
+        if (playerdata.incrementAndGetMsgCount() > MSG_PER_CYCLE && !plugin.al.isAdmin(player))
         {
             FSync.bcastMsg(player.getName() + " was automatically kicked for spamming chat.", ChatColor.RED);
             FSync.autoEject(player, "Kicked for spamming chat.");
@@ -104,10 +104,10 @@ public class AntiSpam extends FreedomService
             return;
         }
 
-        if (fPlayer.incrementAndGetMsgCount() > MSG_PER_CYCLE)
+        if (fPlayer.incrementAndGetMsgCount() > MSG_PER_CYCLE && !plugin.al.isAdmin(player))
         {
             FUtil.bcastMsg(player.getName() + " was automatically kicked for spamming commands.", ChatColor.RED);
-            plugin.ae.autoEject(player, "Kicked for spamming commands.");
+            plugin.bm.eject(player, "Kicked for spamming commands.");
 
             fPlayer.resetMsgCount();
             event.setCancelled(true);

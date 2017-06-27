@@ -38,23 +38,28 @@ public class Command_smite extends FreedomCommand
             return true;
         }
 
-        smite(bitch, reason);
+        smite(bitch, reason, sender.getName());
         plugin.da.setAdminDeopped(bitch.getName(), true);
         return true;
     }
 
     public static void smite(Player bitch)
     {
-        smite(bitch, null);
+        smite(bitch, null, null);
     }
 
-    public static void smite(Player bitch, String reason)
+    public static void smite(Player bitch, String reason, String by)
     {
         FUtil.bcastMsg(bitch.getName() + " has been a naughty, naughty boy.", ChatColor.RED);
 
         if (reason != null)
         {
             FUtil.bcastMsg("  Reason: " + reason, ChatColor.RED);
+        }
+        
+        if (by != null)
+        {
+            FUtil.bcastMsg("  Smitten by: " + by, ChatColor.RED);
         }
 
         // Deop

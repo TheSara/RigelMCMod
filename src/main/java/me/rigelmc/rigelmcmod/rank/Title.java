@@ -7,11 +7,9 @@ public enum Title implements Displayable
 {
     MASTER_BUILDER("a", "Master Builder", ChatColor.DARK_AQUA, "Master-Builder"),
     DONOR("a", "Donator", ChatColor.YELLOW, "Donator"),
-    DEVELOPER("a", "TotalFreedom Developer", ChatColor.DARK_PURPLE, "TF-Dev"),
-    UMCDEV("an", "RigelMC Developer", ChatColor.DARK_PURPLE, "RMC-Dev"),
+    TFDEV("a", "TotalFreedom Developer", ChatColor.DARK_PURPLE, "TF-Dev"),
+    UMCDEV("an", "UnraveledMC Developer", ChatColor.DARK_PURPLE, "UMC-Dev"),
     EXEC("an", "Executive Admin", ChatColor.DARK_BLUE, "Executive"),
-    RETIRED("", "Retired", ChatColor.GRAY, "Retired"),
-    COOWNER("a", "Co-Owner", ChatColor.DARK_RED, "Co-Owner"),
     OWNER("an", "Owner", ChatColor.BLUE, "Owner");
 
     @Getter

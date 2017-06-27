@@ -22,7 +22,8 @@ public class Command_serverstats extends FreedomCommand
         int tpbns = plugin.pm.getPermbannedNames().size();
         int tpbs = tpbips + tpbns;
         msg("Total perm bans: " + tpbs + " (" + tpbips + " ips " + tpbns + " names)", ChatColor.GREEN);
-        msg("Freedom command count: " + plugin.cl.totalCommands);
+        msg("Freedom command count: " + plugin.cl.totalCommands, ChatColor.AQUA);
+        msg("Total blocked deathbot ips: " + plugin.asb.SPAMBOT_IPS.size(), ChatColor.YELLOW);
         return true;
     }
 }

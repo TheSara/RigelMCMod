@@ -3,9 +3,6 @@ package me.rigelmc.rigelmcmod.blocking;
 import me.rigelmc.rigelmcmod.FreedomService;
 import me.rigelmc.rigelmcmod.RigelMCMod;
 import me.rigelmc.rigelmcmod.config.ConfigEntry;
-import me.rigelmc.rigelmcmod.player.FPlayer;
-import me.rigelmc.rigelmcmod.util.FLog;
-import me.rigelmc.rigelmcmod.util.FUtil;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -37,7 +34,6 @@ public class InteractBlocker extends FreedomService
     public void onPlayerInteract(PlayerInteractEvent event)
     {
         final Player player = event.getPlayer();
-        final FPlayer playerdata = plugin.pl.getPlayer(player);
 
         switch (event.getAction())
         {
@@ -104,12 +100,12 @@ public class InteractBlocker extends FreedomService
         }
     }
     
-     @EventHandler(priority = EventPriority.HIGH)
+    @EventHandler(priority = EventPriority.HIGH)
     public void onSignRightClick(PlayerInteractEvent event)
     {
-        if(event.getAction() == Action.RIGHT_CLICK_BLOCK)
+        if (event.getAction() == Action.RIGHT_CLICK_BLOCK)
         {
-            switch(event.getClickedBlock().getType())
+            switch (event.getClickedBlock().getType())
             {
                 case SIGN:
                 case SIGN_POST:

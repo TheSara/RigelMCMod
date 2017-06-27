@@ -1,15 +1,11 @@
 package me.rigelmc.rigelmcmod.command;
 
 import me.rigelmc.rigelmcmod.banning.Ban;
-import me.rigelmc.rigelmcmod.config.ConfigEntry;
 import me.rigelmc.rigelmcmod.player.PlayerData;
 import me.rigelmc.rigelmcmod.rank.Rank;
 import me.rigelmc.rigelmcmod.util.FUtil;
-import net.pravian.aero.util.Ips;
-
 import java.util.ArrayList;
 import java.util.List;
-
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.bukkit.ChatColor;
@@ -20,8 +16,8 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 @CommandPermissions(level = Rank.SUPER_ADMIN, source = SourceType.BOTH, blockHostConsole = true)
-@CommandParameters(description = "Bans a player", usage = "/<command> <username> [reason]", aliases = "ban")
-public class Command_gtfo extends FreedomCommand
+@CommandParameters(description = "Bans a player", usage = "/<command> <username> [reason]", aliases = "gtfo")
+public class Command_ban extends FreedomCommand
 {
 
     @Override
@@ -32,7 +28,7 @@ public class Command_gtfo extends FreedomCommand
             return false;
         }
 
-        String username;
+        final String username;
         final List<String> ips = new ArrayList<>();
 
         final Player player = getPlayer(args[0]);
@@ -47,7 +43,6 @@ public class Command_gtfo extends FreedomCommand
             }
 
             username = entry.getUsername();
-            ips.addAll(entry.getIps());
         }
         else
         {
@@ -62,8 +57,9 @@ public class Command_gtfo extends FreedomCommand
             catch (NoClassDefFoundError ex)
             {
             }
-            // Rollback
-            plugin.rb.rollback(player.getName());
+            
+            // Rollback edits
+            plugin.cpb.rollback(username);
 
             // Deop
             player.setOp(false);
@@ -94,7 +90,7 @@ public class Command_gtfo extends FreedomCommand
 
         if (player != null)
         {
-        	FUtil.bcastMsg(player.getName() + " has been a VERY naughty, naughty boy.", ChatColor.RED);
+            FUtil.bcastMsg(player.getName() + " has been a VERY naughty, naughty boy.", ChatColor.RED);
         }
 
         // Ban player
@@ -124,7 +120,7 @@ public class Command_gtfo extends FreedomCommand
         // Kick player
         if (player != null)
         {
-	        player.kickPlayer(ban.bakeKickMessage());
+            player.kickPlayer(ban.bakeKickMessage());
         }
 
         return true;

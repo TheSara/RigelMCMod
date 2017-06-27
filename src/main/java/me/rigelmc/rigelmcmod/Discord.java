@@ -18,15 +18,14 @@ public class Discord extends FreedomService
     public static List<String> VERIFY_CODES = new ArrayList();
     public static JDA bot = null;
     public static Boolean enabled = false;
-	
+
     public Discord(RigelMCMod plugin)
     {
         super(plugin);
     }
 
-    @Override
-    protected void onStart()
-    {
+     public void startBot()
+     {
         if (ConfigEntry.DISCORD_VERIFICATION_ENABLED.getBoolean())
         {
             if (!ConfigEntry.DISCORD_VERIFICATION_BOT_TOKEN.getString().isEmpty())
@@ -45,7 +44,7 @@ public class Discord extends FreedomService
                bot.removeEventListener(o);
             }
         }
-    	try
+        try
         {
             if (enabled)
             {
@@ -61,6 +60,12 @@ public class Discord extends FreedomService
         {
             FLog.warning("Discord verification bot failed to start.");
         }
+    }
+
+    @Override
+    protected void onStart()
+    {
+        startBot();
     }
     
     public static void sendMessage(MessageChannel channel, String message)
@@ -83,7 +88,10 @@ public class Discord extends FreedomService
     @Override
     protected void onStop()
     {
-        bot.shutdown();
+        if (bot != null)
+        {
+            bot.shutdown();
+        }
         FLog.info("Discord verification bot has successfully shutdown.");
     }
 }

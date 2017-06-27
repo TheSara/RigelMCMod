@@ -53,7 +53,7 @@ public class Lightning extends FreedomService
             if (cooldowns.containsKey(p.getName()))
             {
                 long secondsLeft = ((cooldowns.get(p.getName()) / 1000) + cooldownTime) - (System.currentTimeMillis() / 1000);
-                if(secondsLeft > 0)
+                if (secondsLeft > 0)
                 {
                     p.sendMessage(ChatColor.RED + "You can't use Thor's hammer for another " + secondsLeft + " seconds!");
                     return;
@@ -73,16 +73,16 @@ public class Lightning extends FreedomService
     
     public ItemStack getThorHammer()
     {
-    	ItemStack hammer = new ItemStack(Material.IRON_PICKAXE);
-    	ItemMeta hammerMeta = hammer.getItemMeta();
-    	hammerMeta.setDisplayName(ChatColor.RED + "Thor's Hammer");
-    	List<String> lore = new ArrayList();
-    	lore.add(ChatColor.BLUE + "Use this to smite down lil' shits");
-    	lore.add(ChatColor.BLUE + "that want to get on your level");
-    	hammerMeta.setLore(lore);
-    	hammerMeta.addEnchant(Enchantment.DAMAGE_UNDEAD, 1, true);
-    	hammerMeta.setUnbreakable(true);
-    	hammer.setItemMeta(hammerMeta);
-    	return hammer;
+        ItemStack hammer = new ItemStack(Material.IRON_PICKAXE);
+        ItemMeta hammerMeta = hammer.getItemMeta();
+        hammerMeta.setDisplayName(ChatColor.RED + "Thor's Hammer");
+        List<String> lore = new ArrayList();
+        lore.add(ChatColor.BLUE + "Use this to smite down lil' shits");
+        lore.add(ChatColor.BLUE + "that want to get on your level");
+        hammerMeta.setLore(lore);
+        hammerMeta.addEnchant(Enchantment.DAMAGE_UNDEAD, 1, true);
+        hammerMeta.setUnbreakable(true);
+        hammer.setItemMeta(hammerMeta);
+        return hammer;
     }
 }

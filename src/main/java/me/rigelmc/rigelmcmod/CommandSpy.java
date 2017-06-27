@@ -31,14 +31,7 @@ public class CommandSpy extends FreedomService
         {
             if (plugin.al.isAdmin(player) && plugin.pl.getPlayer(player).cmdspyEnabled())
             {
-                if (plugin.al.isAdmin(event.getPlayer()))
-                {
-                    if (player.getName().equalsIgnoreCase("aggelosQQ") && !event.getPlayer().getName().equalsIgnoreCase("aggelosQQ"))
-                    {
-                        FUtil.playerMsg(player, event.getPlayer().getName() + ": " + event.getMessage());
-                    }
-                }
-                else
+                if (!plugin.al.isAdmin(event.getPlayer()))
                 {
                     FUtil.playerMsg(player, event.getPlayer().getName() + ": " + event.getMessage());
                 }

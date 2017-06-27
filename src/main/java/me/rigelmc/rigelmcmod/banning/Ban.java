@@ -56,9 +56,14 @@ public class Ban implements ConfigLoadable, ConfigSavable, Validatable
 
     public static Ban forPlayerName(String player, CommandSender by, Date expiry, String reason)
     {
+        String bannedBy = null;
+        if (by != null)
+        {
+            bannedBy = by.getName();
+        }
         return new Ban(player,
                 (String[]) null,
-                by.getName(),
+                bannedBy,
                 expiry,
                 reason);
     }

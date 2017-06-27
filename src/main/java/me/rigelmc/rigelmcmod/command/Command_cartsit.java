@@ -69,7 +69,7 @@ public class Command_cartsit extends FreedomCommand
 
             if (nearest_cart != null)
             {
-                nearest_cart.setPassenger(targetPlayer);
+                nearest_cart.addPassenger(targetPlayer);
             }
             else
             {

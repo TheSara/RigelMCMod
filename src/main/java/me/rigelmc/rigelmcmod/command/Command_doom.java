@@ -43,7 +43,9 @@ public class Command_doom extends FreedomCommand
         if (admin != null)
         {
             FUtil.adminAction(sender.getName(), "Removing " + player.getName() + " from the admin list", true);
-            plugin.al.removeAdmin(admin);
+            admin.setActive(false);
+            plugin.al.save();
+            plugin.al.updateTables();
         }
 
         // Remove from whitelist

@@ -29,7 +29,7 @@ public class PotionBlocker extends FreedomService
     {
     }
 
-    @EventHandler(priority = EventPriority.LOW, ignoreCancelled = true)
+    @EventHandler(priority = EventPriority.HIGH, ignoreCancelled = true)
     public void onThrowPotion(PotionSplashEvent event)
     {
         ProjectileSource source = event.getEntity().getShooter();

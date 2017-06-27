@@ -14,14 +14,14 @@ public class Command_thorhammer extends FreedomCommand
     @Override
     public boolean run(CommandSender sender, Player playerSender, Command cmd, String commandLabel, String[] args, boolean senderIsConsole)
     {
-    	ShopData sd = plugin.sh.getData(playerSender);
-    	if (!sd.isThorHammer())
-    	{
-    		msg("You have not yet purchased Thor's hammer from the shop!", ChatColor.RED);
-    		return true;
-    	}
-    	playerSender.getInventory().addItem(plugin.ln.getThorHammer());
-    	msg("You have been given Thor's hammer!", ChatColor.GREEN);
+        ShopData sd = plugin.sh.getData(playerSender);
+        if (!sd.isThorHammer())
+        {
+            msg("You have not yet purchased Thor's hammer from the shop!", ChatColor.RED);
+            return true;
+        }
+        playerSender.getInventory().addItem(plugin.ln.getThorHammer());
+        msg("You have been given Thor's hammer!", ChatColor.GREEN);
         return true;
     }
 }

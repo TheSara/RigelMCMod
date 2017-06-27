@@ -18,7 +18,12 @@ import java.util.Random;
 import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import me.rigelmc.rigelmcmod.config.ConfigEntry;
+import me.rigelmc.rigelmcmod.RigelMCMod;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.bukkit.Bukkit;
@@ -37,10 +42,9 @@ public class FUtil
     //
     public static final String SAVED_FLAGS_FILENAME = "savedflags.dat";
     // See https://github.com/TotalFreedom/License - None of the listed names may be removed.
-    // Leave the DEVELOPERS List alone, those are the TotalFreedom Developers.
-    // If a new DEVELOPER is added, list them under the UMCDEVS List.
-    public static final List<String> DEVELOPERS = Arrays.asList("Madgeek1450", "Prozza", "Wild1145", "WickedGamingUK", "aggelosQQ");
-    public static final List<String> UMCDEVS = Arrays.asList("OxLemonxO", "Pinchyy", "SkunkSmasher", "Commodore64x", "santadeath", "TheHour");
+    // Leave the TFDEVS List alone, those are the TotalFreedom Developers.
+    public static final List<String> TFDEVS = Arrays.asList("Madgeek1450", "Prozza", "Wild1145", "WickedGamingUK", "aggelosQQ", "OxLemonxO");
+    public static final List<String> UMCDEVS = Arrays.asList("CreeperSeth", "OxLemonxO", "RobinGall2910", "AwesomePinch", "aggelosQQ", "irix");
     public static String DATE_STORAGE_FORMAT = "EEE, d MMM yyyy HH:mm:ss Z";
     public static final Map<String, ChatColor> CHAT_COLOR_NAMES = new HashMap<>();
     public static final List<ChatColor> CHAT_COLOR_POOL = Arrays.asList(
@@ -65,32 +69,18 @@ public class FUtil
         }
     }
 
-    private FUtil()
-    {
-    }
-
     public static boolean isExecutive(String name)
     {
-        if (!ConfigEntry.SERVER_EXECS.getList().contains(name) && !ConfigEntry.SERVER_OWNERS.getList().contains(name) && !UMCDEVS.contains(name) && !ConfigEntry.SERVER_COOWNERS.getList().contains(name))
+        if (!ConfigEntry.SERVER_EXECS.getList().contains(name) && !ConfigEntry.SERVER_OWNERS.getList().contains(name) && !UMCDEVS.contains(name))
         {
             return false;
         }
-        else
-        {
-            return true;
-        }
+        return true;
     }
     
     public static boolean isDonator(String name)
     {
-        if (!ConfigEntry.SERVER_DONORS.getList().contains(name))
-        {
-            return false;
-        }
-        else
-        {
-            return true;
-        }
+        return ConfigEntry.SERVER_DONORS.getList().contains(name);
     }
     
     public static void cancel(BukkitTask task)
@@ -181,6 +171,24 @@ public class FUtil
             FLog.info("Removing core dump file: " + dump.getName());
             dump.delete();
         }
+    }
+    
+    public static void copyFile(InputStream in, String name) throws IOException
+    {
+        File file = new File(RigelMCMod.plugin().getDataFolder(), name);
+        if (!file.exists())
+        {
+            file.getParentFile().mkdirs();
+        }
+        OutputStream out = new FileOutputStream(file);
+        byte[] buf = new byte[1024];
+        int len;
+        while ((len = in.read(buf)) > 0)
+        {
+            out.write(buf, 0, len);
+        }
+        out.close();
+        in.close();
     }
 
     public static Date parseDateOffset(String time)

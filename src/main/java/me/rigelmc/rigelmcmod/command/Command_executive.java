@@ -43,7 +43,7 @@ public class Command_executive extends FreedomCommand
             }
             return true;
         }
-	if (args.length > 0)
+        if (args.length > 0)
         {
             switch (args[0])
             {
@@ -184,7 +184,7 @@ public class Command_executive extends FreedomCommand
         }
         return false;
     }
-    public void banPlayer (String playerName, String reason, Boolean silent, Boolean kick)
+    public void banPlayer(String playerName, String reason, Boolean silent, Boolean kick)
     {
         PlayerData playerData = plugin.pl.getData(playerName);
         final List<String> ips = new ArrayList<>();

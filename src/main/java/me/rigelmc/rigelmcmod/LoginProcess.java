@@ -30,7 +30,7 @@ public class LoginProcess extends FreedomService
     //
     @Getter
     @Setter
-    private boolean lockdownEnabled = false;
+    private static boolean lockdownEnabled = false;
 
     public LoginProcess(RigelMCMod plugin)
     {
@@ -125,7 +125,7 @@ public class LoginProcess extends FreedomService
         final boolean isAdmin = plugin.al.getEntryByIp(ip) != null;
 
         // Validation below this point
-        if (isAdmin) // Player is superadmin
+        if (isAdmin) // Player is an admin
         {
             // Force-allow log in
             event.allow();
