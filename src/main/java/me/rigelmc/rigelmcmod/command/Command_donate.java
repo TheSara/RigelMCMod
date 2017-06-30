@@ -17,14 +17,10 @@ public class Command_donate extends FreedomCommand
         msg("If you wanna donate read below:", ChatColor.YELLOW);
         msg("Hey you, you want to donate?", ChatColor.AQUA);
         msg("LightWarp has to keep the server up, so your donation would be helpful.", ChatColor.DARK_AQUA);
-        msg("Here is how, but first you will will need a paypal account for this.", ChatColor.AQUA);
-        msg(" - Go to https://paypal.com/ and login.", ChatColor.DARK_AQUA);
-        msg(" - Go to https://www.paypal.com/myaccount/transfer/send", ChatColor.AQUA);
-        msg(" - In the box, type madhav.kothandaraman@gmail.com", ChatColor.DARK_AQUA);
-        msg(" - Enter the amount you would like to send, in USD or your currency.", ChatColor.AQUA);
-        msg(" - Be sure to leave a note with your minecraft username, so we know that you donated!", ChatColor.DARK_AQUA);
-        msg(" - After that, send the payment, LightWarp will look at the Paypal account, and give you a special donator rank.", ChatColor.AQUA);
-        msg(" - You may DM LightWarp#5690 on Discord if you are impatient.", ChatColor.DARK_AQUA);
+        msg(" - Go to http://rigelmc.ga/donate/ to Donate. You can donate any amount!", ChatColor.DARK_AQUA);
+        msg(" - Be sure to leave your Minecraft name in the Payment notes text field, so we know that you donated!", ChatColor.DARK_AQUA);
+        msg(" - After sending the payment, DM LightWarp#5690 on Discord or wait for him to to look at his Paypal account.", ChatColor.AQUA);
+        msg(" - He will give you a special donator rank.", ChatColor.AQUA);
         return true;
     }
 }
