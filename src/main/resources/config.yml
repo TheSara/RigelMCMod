@@ -54,10 +54,10 @@ motd:
   colorful_motd: true
 
   # What shows up on line 1
-  line_one: '&lRigelMC &l- &lEpic &lFree &lOP'
+  line_one: '&lRigelMC &l- &lFree &lOP - &lMinecraft &l1.12'
   
   # What shows up on line 2
-  line_two: '&lDank &lMemes &lAre &lCool'  
+  line_two: 'Mature Staff - Custom Shop - Legendary FreeOP'  
 
 # The discord bot self verification system
 verification:
@@ -217,6 +217,9 @@ blocked_commands:
   - 'n:b:/entitydata:_'
   - 'n:b:/setworldspawn:_'
   - 'n:b:/trigger:_'
+  - 'n:b:/discord:_'
+  - 'n:b:/advancement:_'
+  - 'n:b:/achievement:_'
   
   # Superadmin commands
   - 's:b:/me:_'
