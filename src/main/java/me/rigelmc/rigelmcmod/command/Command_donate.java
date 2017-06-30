@@ -14,16 +14,17 @@ public class Command_donate extends FreedomCommand
     @Override
     public boolean run(CommandSender sender, Player playerSender, Command cmd, String commandLabel, String[] args, boolean senderIsConsole)
     {
+        msg("If you wanna donate read below:", ChatColor.YELLOW);
         msg("Hey you, you want to donate?", ChatColor.AQUA);
-        msg("LightWarp has to keep the server up, so your donation would be helpful.", ChatColor.DARK_GREEN);
-        msg("Here is how, but first you will will need a paypal account for this.", ChatColor.GOLD);
-        msg(" - Go to https://paypal.com/ and login.", ChatColor.DARK_GREEN);
-        msg(" - Go to https://www.paypal.com/myaccount/transfer/send", ChatColor.GOLD);
+        msg("LightWarp has to keep the server up, so your donation would be helpful.", ChatColor.DARK_AQUA);
+        msg("Here is how, but first you will will need a paypal account for this.", ChatColor.AQUA);
+        msg(" - Go to https://paypal.com/ and login.", ChatColor.DARK_AQUA);
+        msg(" - Go to https://www.paypal.com/myaccount/transfer/send", ChatColor.AQUA);
         msg(" - In the box, type madhav.kothandaraman@gmail.com", ChatColor.DARK_AQUA);
-        msg(" - Enter the amount you would like to send, in USD or your currency.", ChatColor.RED);
-        msg(" - Be sure to leave a note with your minecraft username, so we know that you donated!", ChatColor.YELLOW);
+        msg(" - Enter the amount you would like to send, in USD or your currency.", ChatColor.AQUA);
+        msg(" - Be sure to leave a note with your minecraft username, so we know that you donated!", ChatColor.DARK_AQUA);
         msg(" - After that, send the payment, LightWarp will look at the Paypal account, and give you a special donator rank.", ChatColor.AQUA);
-        msg(" - You may DM LightWarp#5690 on Discord if you are impatient.", ChatColor.RED);
+        msg(" - You may DM LightWarp#5690 on Discord if you are impatient.", ChatColor.DARK_AQUA);
         return true;
     }
 }
