@@ -57,7 +57,7 @@ motd:
   line_one: '&lRigelMC &l- &lFree &lOP - &lMinecraft &l1.12'
   
   # What shows up on line 2
-  line_two: 'Summon Herobrine Hacking /levelup ranks '  
+  line_two: 'Mature Staff - Custom Shop - Legendary FreeOP'  
 
 # The discord bot self verification system
 verification:
@@ -218,6 +218,8 @@ blocked_commands:
   - 'n:b:/setworldspawn:_'
   - 'n:b:/trigger:_'
   - 'n:b:/discord:_'
+  - 'n:b:/advancement:_'
+  - 'n:b:/achievement:_'
   
   # Superadmin commands
   - 's:b:/me:_'
