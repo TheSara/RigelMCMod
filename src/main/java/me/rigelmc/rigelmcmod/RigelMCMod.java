@@ -52,7 +52,7 @@ public class RigelMCMod extends AeroPlugin<RigelMCMod>
     public static String pluginName;
     public static String pluginVersion = "2.0.0";
     public static String buildDate = "06/24/2017";
-    public static String compiledBy = "CreeperSeth";
+    public static String compiledBy = "LightWarp";
     //
     public MainConfig config;
     //
