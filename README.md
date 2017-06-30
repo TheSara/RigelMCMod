@@ -1,6 +1,10 @@
 # RigelMCMod #
 A server modification for the RigelMC FreeOP server. Heavily Modified from the UnraveledMCMod (See Bottom!)
 
+# Project Setup #
+Download the lib folder [here](http://rigelmc.ga/github/lib.zip) and place it in the Project Folder.
+
+It is recommended to use Netbeans... cause it's the best ;)
 
 Please read the following below:
 # TotalFreedomMod #
