@@ -217,7 +217,6 @@ blocked_commands:
   - 'n:b:/entitydata:_'
   - 'n:b:/setworldspawn:_'
   - 'n:b:/trigger:_'
-  - 'n:b:/discord:_'
   - 'n:b:/advancement:_'
   - 'n:b:/achievement:_'
   
