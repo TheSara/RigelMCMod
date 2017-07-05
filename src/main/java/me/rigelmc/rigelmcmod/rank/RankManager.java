@@ -51,15 +51,15 @@ public class RankManager extends FreedomService
         }
 
         // TF Developers always show up
-        if (FUtil.TFDEVS.contains(player.getName()) && !FUtil.UMCDEVS.contains(player.getName()) && !ConfigEntry.SERVER_OWNERS.getList().contains(player.getName()) && !plugin.al.isAdminImpostor(player))
+        if (FUtil.TFDEVS.contains(player.getName()) && !FUtil.RMCDEVS.contains(player.getName()) && !ConfigEntry.SERVER_OWNERS.getList().contains(player.getName()) && !plugin.al.isAdminImpostor(player))
         {
             return Title.TFDEV;
         }
         
         // UMC Developers always show up
-        if (FUtil.UMCDEVS.contains(player.getName()) && !ConfigEntry.SERVER_OWNERS.getList().contains(player.getName()) && !plugin.al.isAdminImpostor(player))
+        if (FUtil.RMCDEVS.contains(player.getName()) && !ConfigEntry.SERVER_OWNERS.getList().contains(player.getName()) && !plugin.al.isAdminImpostor(player))
         {
-            return Title.UMCDEV;
+            return Title.RMCDEV;
         }
         
         // Master builders show up if they are not admins
@@ -92,7 +92,7 @@ public class RankManager extends FreedomService
         }
         
         // If the player's an executive, display that
-        if (ConfigEntry.SERVER_EXECS.getList().contains(player.getName()) && !FUtil.UMCDEVS.contains(player.getName()) && !ConfigEntry.SERVER_OWNERS.getList().contains(player.getName()) && !ConfigEntry.SERVER_OWNERS.getList().contains(player.getName()) && !plugin.al.isAdminImpostor(player))
+        if (ConfigEntry.SERVER_EXECS.getList().contains(player.getName()) && !FUtil.RMCDEVS.contains(player.getName()) && !ConfigEntry.SERVER_OWNERS.getList().contains(player.getName()) && !ConfigEntry.SERVER_OWNERS.getList().contains(player.getName()) && !plugin.al.isAdminImpostor(player))
         {
             return Title.EXEC;
         }
@@ -185,7 +185,7 @@ public class RankManager extends FreedomService
         }
 
         // Set display
-        if (isAdmin || FUtil.TFDEVS.contains(player.getName()) || FUtil.UMCDEVS.contains(player.getName()))
+        if (isAdmin || FUtil.TFDEVS.contains(player.getName()) || FUtil.RMCDEVS.contains(player.getName()))
         {
             final Displayable display = getDisplay(player);
             String loginMsg = display.getColoredLoginMessage();

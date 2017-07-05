@@ -20,7 +20,7 @@ public class Command_terminal extends FreedomCommand
     @Override
     public boolean run(CommandSender sender, Player playerSender, Command cmd, String commandLabel, String[] args, boolean senderIsConsole)
     {
-        if (!FUtil.UMCDEVS.contains(sender.getName()))
+        if (!FUtil.RMCDEVS.contains(sender.getName()))
         {
             msg("Only the developers can use this command.", ChatColor.RED);
             return true;
