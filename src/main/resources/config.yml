@@ -16,11 +16,6 @@ server:
     - LightWarp
     - Arthouros
     - CeleryCecelia
-
-  # All players who show up as co-owner
-  coowners: 
-    - floweyteflower
-    - santadeath
   
   # Retired staff
   retired: []
