@@ -26,6 +26,7 @@ public enum ConfigEntry
     MOB_LIMITER_DISABLE_GHAST(Boolean.class, "moblimiter.disable.ghast"),
     MOB_LIMITER_DISABLE_GIANT(Boolean.class, "moblimiter.disable.giant"),
     MOB_LIMITER_DISABLE_SLIME(Boolean.class, "moblimiter.disable.slime"),
+    MOB_LIMITER_DISABLE_GUARDIAN(Boolean.class, "moblimiter.disable.GUARDIAN")
     //
     HTTPD_ENABLED(Boolean.class, "httpd.enabled"),
     HTTPD_PORT(Integer.class, "httpd.port"),
